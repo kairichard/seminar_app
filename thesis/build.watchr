@@ -1,0 +1,1 @@
+watch( './*\.(bib|tex|sty)' ) { |md| system("make thesis.pdf && open thesis.pdf && make clean") }
