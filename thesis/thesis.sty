@@ -8,6 +8,13 @@
 \usepackage{latexsym}
 \usepackage{rotating}
 
+% To get @webpage style for bib
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[style=numeric]{biblatex}
+\bibliography{ref.bib}
+
+% Figures floating around text
+\usepackage{wrapfig}
 % Try uncommenting the following line if fonts don't
 % display correctly in the PDF file.
 %\usepackage{pslatex} 
@@ -35,7 +42,7 @@
 % To have the references sorted in the order they are cited,
 % (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
 %
-\bibliographystyle{abbrv}
+% \bibliographystyle{abbrv}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -125,7 +132,7 @@ FOS/BOS Technik \hfill München
 	\begin{figure}[!htbp]
 		\centering
 		\vspace{2mm}
-		\includegraphics[#1]{figures/#2.eps}
+		\includegraphics[#1]{figures/#2}
 		\caption{#3}
 		\label{fig:#2}
 	\end{figure}
