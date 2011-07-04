@@ -1,16 +1,44 @@
 \chapter{Konzepte}
 \label{chap:concepts}
-\section{ Grobkonzept }
+\section{Grobkonzept}
 \subsection{Was macht das Programm ?}
 
-Das im im weitern verlauf dieses Textes beschrieben Programm soll anhand eingänglicher
-Visualierungen die Funktionsweise von 5 unterschiedlichen Sortieralgorithmen
-darstellen. Außerdem soll dem Anwender bei der Betrachtung klar werden welcher Algorithmus 
-sich für welche Problemstellung am besten eignet. Erreicht wird dieser Eindruck durch graphische Auswertung der
-der durchgeführten Operationen.
+Das Java-Programm soll anhand von
+Visualisierungen die Funktionsweise von fünf\footnote{
+ Bubble sort(Type: Exchange sort) | 
+ Quicksort(Type: Exchange sort) | 
+ Heapsort(Type: Selection sort) | 
+ Insertion sort(Type: Insertion sort) | 
+ Merge sort(Type: Merge sort) | 
+ } unterschiedlichen Sortieralgorithmen
+darstellen. Zur Verdeutlichung der Vorgänge wird jedem Algorithmus ein Balken-Diagramme zugewiesen, bei dem jeder Balken
+einem Zahlenwert entspricht, 
+vergleicht der Algorithmus nun zwei Zahlen werden die korrespondierende 
+Balken farblich hervorgehoben. Entscheidet der Algorithmus das einer der Balken 
+vorschoben werden muss um alle Zahlenwerte in eine korrekte, aufsteigende Reihenfolge zu bringen
+so wird auch diese Operation im Balken-Diagramm durch einen Pfeil vom Ursprungsort zum 
+Zielort visualisiert. \newpage
 
-\section{ Feinkonzept }
-\subsection{ Ablauf des Programmes oder auch die User-Experience }
+Um die dargestellten Algorithmen noch besser
+verstehen zu können, laufen alle Operation synchronisiert und parallel ab, das heißt
+jeder Algorithmus kann pro Zeit nur eine Änderung an den Zahlenwerten durchführen. Diese Restriktion stellt sicher das
+die Ergebnisse reproduzierbar und vergleichbar bleiben. 
+Dazu hat der Benutzer noch die Möglichkeit spezielle Zahlenwert/Balken Kombinationen 
+auszuwählen um schwächen und stärken einzelner Algorithmen besser sichtbar zu machen.
+Denkbar wären zum Beispiel Kombinationen die in umgekehrter Reihenfolge vorliegen oder welche bei denen
+nur wenige Werte an der 'falschen' stelle sind oder auch solche bei denen es viele gleiche Werte gibt.
+
+Wichtig ist vorallem das dem Anwender bei der Betrachtung klar 
+wird welcher Algorithmus sich für welche Problemstellung am besten eignet. 
+Erreicht wird das durch ein Ranking welches am Ende der Laufzeit jedes Algorithmus halbtransparent 
+über das zugewiesen Balken-Diagramme gelegt wird. Auf dem Transparent werden der Rang, 
+sprich wie lange der Algorithmus im vergleich zu den anderen gebraucht hat, 
+sowie die Anzahl durchgeführter Operationen zu finden sein.
+
+\newpage
+
+\section{Fachkonzept}
+\subsection{Ablauf des Programmes oder auch die User-Experience}
 Definition des Begriffs User-Experience:
 \begin{munquote}[\parencite{wikiux}]
    Der Begriff User Experience (Abkürzung UX, deutsch wörtlich: Nutzererfahrung, besser: Nutzererlebnis oder Nutzungserlebnis - alternativ wird auch häufig vom Anwendererlebnis gesprochen) 

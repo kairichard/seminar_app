@@ -45,7 +45,7 @@ $(EMAIN).pdf:	$(MAIN).ps
 clean:
 	$(RM) -f *.aux \
 		$(MAIN).log $(MAIN).dvi $(MAIN).ps $(MAIN).blg $(MAIN).bbl \
-		$(MAIN).lot $(MAIN).lof $(MAIN).toc $(MAIN).pdf $(EMAIN).pdf
+		$(MAIN).lot $(MAIN).lof $(MAIN).toc
 
 # Suggested by Neil B.
 neat:
