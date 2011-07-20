@@ -3,3 +3,6 @@ tmp/**/*
 .DS_Store
 /app/Algorithm Visualizer/nbproject/private/
 /app/Algorithm Visualizer/build/
+/app/Chiwa/nbproject/private/
+/app/Chiwa/build/
+/app/Chiwa/dist/
