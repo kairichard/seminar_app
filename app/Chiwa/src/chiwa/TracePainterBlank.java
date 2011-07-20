@@ -24,7 +24,6 @@ package chiwa;
 
 import info.monitorenter.gui.chart.Chart2D;
 import info.monitorenter.gui.chart.ITracePoint2D;
-import chiwa.PointPainterBlank;
 import info.monitorenter.gui.chart.traces.painters.ATracePainter;
 
 import java.awt.Graphics;

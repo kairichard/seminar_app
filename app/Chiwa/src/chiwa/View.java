@@ -25,41 +25,21 @@ public class View extends FrameView {
         super(app);
 
         initComponents();
+        initStatusBar();
+        
         getFrame().pack();
         getFrame().setResizable(false);
+        
+        
+        
         Chart quicksort = new Chart("quicksort");        
         mainPanel.add(quicksort.getChartComponent(), new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
         updateableChart = quicksort;
-        
-        Chart bubblesort = new Chart("bubblesort");
-        mainPanel.add(bubblesort.getChartComponent(), new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 70, -1, -1));
-
-        Chart mergeort = new Chart("mergesort");
-        mainPanel.add(mergeort.getChartComponent(), new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
-
-        Chart heapsort = new Chart("heapsort");
-        mainPanel.add(heapsort.getChartComponent(), new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
-
-        Chart insertionsort = new Chart("insertionsort");
-        mainPanel.add(insertionsort.getChartComponent(), new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 240, -1, -1));
-
-        // status bar initialization - message timeout, idle icon and busy animation, etc
-        ResourceMap resourceMap = getResourceMap();
-
-        int busyAnimationRate = resourceMap.getInteger("StatusBar.busyAnimationRate");
-        for (int i = 0; i < busyIcons.length; i++) {
-            busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
-        }
-        busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
-                statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
-            }
-        });
-        idleIcon = resourceMap.getIcon("StatusBar.idleIcon");
-        statusAnimationLabel.setIcon(idleIcon);
-        progressBar.setVisible(false);
+               
+        bubblesort = new Bubblesort();
+        bubblesort.visualizeWith(new VisualFeedback().drawsIn(mainPanel));
+        container.register(bubblesort);
+        bubblesort.setProblemsSet()
 
         new Timer(300, new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -75,7 +55,30 @@ public class View extends FrameView {
         }).start();
 
     }
+    
+    private void initStatusBar() {
+        ResourceMap resourceMap = getResourceMap();
 
+        int busyAnimationRate = resourceMap.getInteger("StatusBar.busyAnimationRate");
+        // Lade Icons
+        for (int i = 0; i < busyIcons.length; i++) {
+            busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
+        }
+        
+        // Timer der bei einem Button-Press#actionPerformed gestarted wird 
+        busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
+                statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
+            }
+        });
+        idleIcon = resourceMap.getIcon("StatusBar.idleIcon");
+        statusAnimationLabel.setIcon(idleIcon);
+            
+        progressBar.setVisible(false);
+    }
+    
+    
     @Action
     public void showAboutBox() {
         if (aboutBox == null) {
@@ -122,11 +125,6 @@ public class View extends FrameView {
         mainPanel.setName("mainPanel"); // NOI18N
         mainPanel.setPreferredSize(new java.awt.Dimension(990, 500));
         mainPanel.setSize(mainPanel.getPreferredSize());
-        mainPanel.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                mainPanelComponentAdded(evt);
-            }
-        });
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(chiwa.App.class).getContext().getResourceMap(View.class);
@@ -152,7 +150,7 @@ public class View extends FrameView {
         });
         mainPanel.add(pauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Random", "Reverse", "Flat" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Random", "Reverse", "Flat", "Predefined" }));
         jComboBox1.setName("jComboBox1"); // NOI18N
         mainPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 25, -1, -1));
 
@@ -168,7 +166,7 @@ public class View extends FrameView {
                 problemSetSizeChangeHandler(evt);
             }
         });
-        mainPanel.add(problemSizeSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 24, -1, -1));
+        mainPanel.add(problemSizeSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 25, -1, -1));
         problemSetSizeIndicator.setText("("+problemSizeSlider.getValue()+")");
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -178,11 +176,11 @@ public class View extends FrameView {
 
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         problemSetSizeIndicator.setText(resourceMap.getString("problemSetSizeIndicator.text")); // NOI18N
         problemSetSizeIndicator.setName("problemSetSizeIndicator"); // NOI18N
-        mainPanel.add(problemSetSizeIndicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+        mainPanel.add(problemSetSizeIndicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
         problemSetSizeIndicator.setText("("+problemSizeSlider.getValue()+")");
         problemSetSizeIndicator.getAccessibleContext().setAccessibleName(resourceMap.getString("problemSetSizeIndicator.AccessibleContext.accessibleName")); // NOI18N
 
@@ -196,7 +194,7 @@ public class View extends FrameView {
                 updateProblemSetButtonActionPerformed(evt);
             }
         });
-        mainPanel.add(updateProblemSetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 25, -1, -1));
+        mainPanel.add(updateProblemSetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 25, -1, -1));
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -268,11 +266,6 @@ public class View extends FrameView {
         problemSetSizeIndicator.setText("(" + problemSizeSlider.getValue() + ")");
     }//GEN-LAST:event_problemSetSizeChangeHandler
 
-    private void mainPanelComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_mainPanelComponentAdded
-        // debugging
-        System.out.println(evt.getChild());
-    }//GEN-LAST:event_mainPanelComponentAdded
-
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
         stepButton.setEnabled(false);
         progressBar.setVisible(true);
@@ -318,9 +311,10 @@ public class View extends FrameView {
     private javax.swing.JButton stepButton;
     private javax.swing.JToggleButton updateProblemSetButton;
     // End of variables declaration//GEN-END:variables
-    private final Timer busyIconTimer;
-    private final Icon idleIcon;
-    private final Icon[] busyIcons = new Icon[15];
+    
+    private Timer busyIconTimer;
+    private Icon idleIcon;
+    private Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
     private JDialog aboutBox;
 }
