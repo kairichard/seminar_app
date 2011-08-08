@@ -13,6 +13,7 @@
             </test-roots>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Algorithmus</word>
             <word>Algorythmus</word>
             <word>Alogrythmus</word>
         </spellchecker-wordlist>

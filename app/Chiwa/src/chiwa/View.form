@@ -43,8 +43,12 @@
         <Component class="javax.swing.JButton" name="stepButton">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="stepButton.text"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="stepButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stepButtonActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="100" y="470" width="-1" height="-1"/>
@@ -54,6 +58,7 @@
         <Component class="javax.swing.JToggleButton" name="pauseButton">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="pauseButton.text"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="pauseButton" noResource="true"/>
           </Properties>
           <Events>
@@ -65,7 +70,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="problemSetType">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -75,7 +80,7 @@
                 <StringItem index="3" value="Predefined"/>
               </StringArray>
             </Property>
-            <Property name="name" type="java.lang.String" value="jComboBox1" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="problemSetType" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -90,15 +95,12 @@
             <Property name="minimum" type="int" value="10"/>
             <Property name="minorTickSpacing" type="int" value="10"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
-            <Property name="value" type="int" value="20"/>
+            <Property name="value" type="int" value="10"/>
             <Property name="name" type="java.lang.String" value="problemSetSize" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="problemSetSizeChangeHandler"/>
           </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="problemSetSizeIndicator.setText(&quot;(&quot;+problemSizeSlider.getValue()+&quot;)&quot;);"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="335" y="25" width="-1" height="-1"/>
@@ -107,7 +109,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
             <Property name="verticalAlignment" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
           </Properties>
@@ -155,10 +156,62 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="updateProblemSetButton">
+        <Component class="javax.swing.JSlider" name="intervalSlider">
+          <Properties>
+            <Property name="majorTickSpacing" type="int" value="150"/>
+            <Property name="maximum" type="int" value="300"/>
+            <Property name="minimum" type="int" value="20"/>
+            <Property name="minorTickSpacing" type="int" value="5"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+            <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="fosbos.seminar.sorting.utils.RunnableSortingCollectionDelegator.stepInterval" type="code"/>
+            </Property>
+            <Property name="inverted" type="boolean" value="true"/>
+            <Property name="name" type="java.lang.String" value="intervalSlider" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="intervalSliderMouseReleased"/>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="intervalSliderStateChanged"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="260" y="470" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;Update&quot;" type="code"/>
+              <Connection code="&quot;Interval:&quot;" type="code"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="210" y="475" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="intervalLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;(0)&quot;" type="code"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="intervalLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="intervalLabel.setText(&quot;(&quot;+intervalSlider.getValue()+&quot; ms)&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="445" y="475" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="updateProblemSetButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;update&quot;" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="updateProblemSetButton" noResource="true"/>
           </Properties>
@@ -167,7 +220,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="25" width="-1" height="-1"/>
+              <AbsoluteConstraints x="550" y="25" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -244,9 +297,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="794" max="32767" attributes="0"/>
-                  <Component id="progressBar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="950" max="32767" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -256,11 +307,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="statusPanelSeparator" min="-2" pref="2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="statusMessageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="statusAnimationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="progressBar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               </Group>
@@ -289,15 +339,6 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="statusAnimationLabel" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JProgressBar" name="progressBar">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="progressBar" noResource="true"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
