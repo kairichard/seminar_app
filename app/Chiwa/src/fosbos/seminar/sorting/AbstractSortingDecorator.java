@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fosbos.seminar.sorting;
 
 /**
@@ -11,8 +8,8 @@ package fosbos.seminar.sorting;
 public abstract  class AbstractSortingDecorator extends AbstractSortingMechanics {
     protected final Sorter algorithm;
 
-    public Sorter getAlgorithm() {
-        return algorithm;
+    public AbstractSortingMechanics getAlgorithm() {
+        return (AbstractSortingMechanics) algorithm;
     }
     public AbstractSortingDecorator(Sorter algorithm) {
         this.algorithm = algorithm;

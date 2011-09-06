@@ -13,6 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import org.apache.commons.collections.Closure;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 /**
  *
@@ -32,7 +33,8 @@ public class RunnableSortingCollectionDelegator implements SortingUtils, Runnabl
     }
     
     public boolean isRunning() {
-        CollectionUtils.forAllDo(algorithms, new IsRunningClosure() );
+        int count = CollectionUtils.countMatches(algorithms, new IsRunning() );
+        running = count > 0;
         return running;
     }
 
@@ -95,12 +97,12 @@ public class RunnableSortingCollectionDelegator implements SortingUtils, Runnabl
     private void buildAlgorithmThreadPool() {
         threads.clear();
         CollectionUtils.forAllDo(algorithms, new Closure() {
-            public void execute(final Object closureAlgorithm) {
+            public void execute(final Object algorithm) {
                 threads.add(new Thread(new Runnable() {
                     public void run() {
-                        ((Sorter) closureAlgorithm).sort();
+                        ((Sorter) algorithm).sort();
                     }
-                },closureAlgorithm.toString()));
+                },algorithm.toString()));
             }
         });
     }
@@ -111,9 +113,9 @@ public class RunnableSortingCollectionDelegator implements SortingUtils, Runnabl
         new Timer().schedule(new TimedStep(), RunnableSortingCollectionDelegator.stepInterval);
     }
     
-    class IsRunningClosure implements Closure {
-        public void execute(Object element) {
-            running = ((AbstractSortingMechanics)element).isRunning();
+    class IsRunning implements Predicate {
+        public boolean evaluate(Object element) {
+            return ((AbstractSortingDecorator)element).isRunning() == true;
         }
     }
     

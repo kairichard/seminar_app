@@ -26,8 +26,6 @@ import info.monitorenter.gui.chart.Chart2D;
 import info.monitorenter.gui.chart.IPointPainter;
 import info.monitorenter.gui.chart.ITracePoint2D;
 import info.monitorenter.gui.chart.pointpainters.APointPainter;
-import info.monitorenter.gui.chart.traces.painters.ATracePainter;
-import java.awt.Color;
 
 import java.awt.Graphics;
 import java.util.Iterator;

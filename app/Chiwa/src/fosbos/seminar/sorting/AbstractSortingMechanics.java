@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package fosbos.seminar.sorting;
 
 /**
- *
- * @author kai
+ * Abstrakte Klasse mit allen Methoden die mann zum sortieren
+ * eines Integer Arrays braucht. Außerdem gibts es zusätzlich noch
+ * ein Indikator das anzeigt ob noch sortiert wird.
  */
 public abstract class AbstractSortingMechanics implements Sorter {
     public int[] problem;
@@ -53,14 +50,14 @@ public abstract class AbstractSortingMechanics implements Sorter {
         problem[i] = value;
     }
     
-    
-    public abstract void sort();
-    
     public void setProblem(int[] problem) {
         this.problem = problem;
     }
         
-    public void accquireDecoratedSelf(Sorter algorithm) {
+    public void setDecoratedAlgorithem(Sorter algorithm) {
         this.decoratedAlgorithm = algorithm;
-    }    
+    }
+    
+    public abstract void sort();
+
 }

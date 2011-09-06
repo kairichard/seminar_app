@@ -5,18 +5,16 @@ import fosbos.seminar.sorting.utils.SortingUtils;
 
 /*
  * Interface für alle Algorithmen
- * Vornehmlich als Marker-Interface verwenden
+ * Wird nur als Marker-Interface benutzt damit alle 
+ * Algorithmen die selbe Basis haben und sich gleich 
+ * ansprechen lassen
  * 
  * @author Kai Richard König
  */
 public interface Sorter extends SortingUtils {
-    /**
-     * Hier wird die eigentliche Sorttierlogik implementiert
-     */
     public void sort();
     public void swap(int n, int m);    
-    public int compare(int n, int m);
     public void assign(int i, int value);
-    public void accquireDecoratedSelf(Sorter heapsort);
-    
+    public void setDecoratedAlgorithem(Sorter sorter);
+    public int  compare(int n, int m);
 }

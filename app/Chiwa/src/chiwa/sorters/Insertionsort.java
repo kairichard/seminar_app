@@ -14,10 +14,14 @@ import java.util.Arrays;
  */
 public class Insertionsort extends AbstractSortingMechanics implements Sorter {
 
+    public Insertionsort() {
+        this.name = "Insertionsort";
+    }
+    
     public void sort() {
         ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(true);
         insertionsort();
-        ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(true);
+        ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(false);
         System.out.println("Insertion" + Arrays.toString(problem));
     }
 

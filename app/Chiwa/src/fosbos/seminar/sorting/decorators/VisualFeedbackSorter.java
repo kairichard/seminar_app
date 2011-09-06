@@ -87,13 +87,13 @@ public class VisualFeedbackSorter extends AbstractSortingDecorator {
         singlePoint.addAdditionalPointPainter(red);
         chart.repaint();        
 
-//
-//        PointPainterBlank black = new PointPainterBlank(4, chart);
-//        black.setColor(Color.black);
-//        black.setColorFill(Color.black);
-//        singlePoint.removeAllAdditionalPointPainters();
-//        singlePoint.addAdditionalPointPainter(black);
-//        chart.repaint();        
+
+        PointPainterBlank black = new PointPainterBlank(4, chart);
+        black.setColor(Color.black);
+        black.setColorFill(Color.black);
+        singlePoint.removeAllAdditionalPointPainters();
+        singlePoint.addAdditionalPointPainter(black);
+        chart.repaint();        
 
         return algorithm.compare(m, n);
     }
@@ -163,8 +163,8 @@ public class VisualFeedbackSorter extends AbstractSortingDecorator {
     }
 
     @Override
-    public void accquireDecoratedSelf(Sorter heapsort) {
-        algorithm.accquireDecoratedSelf(heapsort);
+    public void setDecoratedAlgorithem(Sorter heapsort) {
+        algorithm.setDecoratedAlgorithem(heapsort);
     }
 
 }

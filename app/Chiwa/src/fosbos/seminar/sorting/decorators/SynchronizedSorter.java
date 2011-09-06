@@ -63,7 +63,7 @@ public class SynchronizedSorter extends AbstractSortingDecorator {
         algorithm.setProblem(problem);
     }
 
-    public void accquireDecoratedSelf(Sorter alog) {
-        algorithm.accquireDecoratedSelf(alog);
+    public void setDecoratedAlgorithem(Sorter alog) {
+        algorithm.setDecoratedAlgorithem(alog);
     }
 }

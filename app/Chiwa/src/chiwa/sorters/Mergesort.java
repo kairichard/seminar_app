@@ -20,7 +20,7 @@ public class Mergesort extends AbstractSortingMechanics implements Sorter {
 	public void sort() {
                 ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(true);
 		mergesort(0, problem.length - 1);
-                ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(true);
+                ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(false);
                 System.out.println("Mergesort"+Arrays.toString(problem));
 	}
 

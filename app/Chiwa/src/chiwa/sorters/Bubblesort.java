@@ -22,7 +22,6 @@ public class Bubblesort extends AbstractSortingMechanics implements Sorter {
     public void sort() {
         ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(true);
         boolean unsorted = true;
-        int temp;
 
         while (unsorted) {
             unsorted = false;   
