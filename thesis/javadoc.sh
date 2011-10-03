@@ -1,0 +1,1 @@
+javadoc -docletpath umlgraph/lib/UmlGraph.jar -doclet org.umlgraph.doclet.UmlGraph Chiwa Chiwa/src/chiwa/sorters/*.java Chiwa Chiwa/src/fosbos/seminar/sorting/*.java Chiwa/src/fosbos/seminar/sorting/decorators/*.java Chiwa/src/fosbos/seminar/sorting/utils/*.java  -operations -visibility -visibility -types

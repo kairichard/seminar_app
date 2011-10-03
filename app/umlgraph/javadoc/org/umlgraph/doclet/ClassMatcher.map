@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="271,10,425,168"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="271,10,425,168"/>
+<area shape="rect" href="./SubclassMatcher.html" title="org.umlgraph.doclet.SubclassMatcher" alt="" coords="859,398,992,481"/>
+<area shape="rect" href="./SubclassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="859,398,992,481"/>
+<area shape="rect" href="./PatternMatcher.html" title="org.umlgraph.doclet.PatternMatcher" alt="" coords="472,398,589,481"/>
+<area shape="rect" href="./PatternMatcher.html" title="&lt;TABLE&gt;" alt="" coords="472,398,589,481"/>
+<area shape="rect" href="./InterfaceMatcher.html" title="org.umlgraph.doclet.InterfaceMatcher" alt="" coords="96,398,224,481"/>
+<area shape="rect" href="./InterfaceMatcher.html" title="&lt;TABLE&gt;" alt="" coords="96,398,224,481"/>
+<area shape="rect" href="./ContextMatcher.html" title="org.umlgraph.doclet.ContextMatcher" alt="" coords="269,384,427,496"/>
+<area shape="rect" href="./ContextMatcher.html" title="&lt;TABLE&gt;" alt="" coords="269,384,427,496"/>
+<area shape="rect" href="./ClassMatcher.html" title="org.umlgraph.doclet.ClassMatcher" alt="" coords="507,226,616,325"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="507,226,616,325"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="337,554,540,1002"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="337,554,540,1002"/>
+<area shape="rect" href="./PackageView.html" title="org.umlgraph.doclet.PackageView" alt="" coords="515,18,669,160"/>
+<area shape="rect" href="./PackageView.html" title="&lt;TABLE&gt;" alt="" coords="515,18,669,160"/>
+<area shape="rect" href="./PackageMatcher.html" title="org.umlgraph.doclet.PackageMatcher" alt="" coords="685,398,813,481"/>
+<area shape="rect" href="./PackageMatcher.html" title="&lt;TABLE&gt;" alt="" coords="685,398,813,481"/>
+</map>

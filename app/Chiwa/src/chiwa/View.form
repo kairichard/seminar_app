@@ -19,6 +19,7 @@
         </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
 
@@ -28,7 +29,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="runButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="runButton.text"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;sort&quot;" type="code"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="runButton" noResource="true"/>
           </Properties>
           <Events>
@@ -42,7 +45,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="stepButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="stepButton.text"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;step&quot;" type="code"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="stepButton" noResource="true"/>
           </Properties>
@@ -57,7 +62,9 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="pauseButton">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="pauseButton.text"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;pause&quot;" type="code"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="pauseButton" noResource="true"/>
           </Properties>
@@ -76,7 +83,7 @@
               <StringArray count="4">
                 <StringItem index="0" value="Random"/>
                 <StringItem index="1" value="Reverse"/>
-                <StringItem index="2" value="Flat"/>
+                <StringItem index="2" value="Stairs"/>
                 <StringItem index="3" value="Predefined"/>
               </StringArray>
             </Property>
@@ -118,14 +125,20 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="problemLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
-            <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Problem:&quot;" type="code"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="problemSetSizeDescLabel" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="problemSetSizeDescLabel.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="250" y="30" width="-1" height="-1"/>
+              <AbsoluteConstraints x="30" y="30" width="80" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -158,8 +171,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="intervalSlider">
           <Properties>
-            <Property name="majorTickSpacing" type="int" value="150"/>
-            <Property name="maximum" type="int" value="300"/>
+            <Property name="majorTickSpacing" type="int" value="250"/>
+            <Property name="maximum" type="int" value="500"/>
             <Property name="minimum" type="int" value="20"/>
             <Property name="minorTickSpacing" type="int" value="5"/>
             <Property name="snapToTicks" type="boolean" value="true"/>
@@ -179,13 +192,16 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="intervalSliderLabel">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;Interval:&quot;" type="code"/>
             </Property>
-            <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="intervalDescLabel" noResource="true"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="intervalDescLabel.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="210" y="475" width="-1" height="-1"/>
@@ -211,16 +227,201 @@
         <Component class="javax.swing.JButton" name="updateProblemSetButton">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;update&quot;" type="code"/>
+              <Connection code="&quot;update/reset&quot;" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="updateProblemSetButton" noResource="true"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" resourceKey="updateProblemSetButton.AccessibleContext.accessibleName"/>
+          </AccessibilityProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateProblemSetButtonActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="550" y="25" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="assignColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="assignColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="assignColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="assignColorCanvas.setBackground(VisualFeedbackSorter.colorAssign);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="30" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="assignColorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="assignColorLabel.text"/>
+            <Property name="name" type="java.lang.String" value="assignColorLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="assignColorLabel.setText(&quot;assign/insert&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="60" y="432" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="getColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="getColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="getColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="getColorCanvas.setBackground(VisualFeedbackSorter.colorGet);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="170" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="getColorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="getColorLabel.text"/>
+            <Property name="name" type="java.lang.String" value="getColorLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="getColorLabel.setText(&quot;load&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="200" y="432" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="compareColorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="compareColorLabel.text"/>
+            <Property name="name" type="java.lang.String" value="compareColorLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="compareColorLabel.setText(&quot;compare&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="320" y="432" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="compareLeftColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="compareLeftColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="compareLeftColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="compareLeftColorCanvas.setBackground(VisualFeedbackSorter.colorCompareLeft);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="270" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="compareRightColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="compareRightColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="compareRightColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="compareRightColorCanvas.setBackground(VisualFeedbackSorter.colorCompareRight);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="290" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="swapColorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="swapColorLabel.text"/>
+            <Property name="name" type="java.lang.String" value="swapColorLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="swapColorLabel.setText(&quot;swap&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="470" y="432" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="swapLeftColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="swapLeftColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="swapLeftColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="swapLeftColorCanvas.setBackground(VisualFeedbackSorter.colorSwapLeft);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="420" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="swapRightColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="swapRightColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="swapRightColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="swapRightColorCanvas.setBackground(VisualFeedbackSorter.colorSwapRight);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="440" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="java.awt.Canvas" name="groupColorCanvas">
+          <Properties>
+            <Property name="background" type="java.awt.Color" resourceKey="groupColorCanvas.background"/>
+            <Property name="name" type="java.lang.String" value="groupColorCanvas" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="groupColorCanvas.setBackground(VisualFeedbackSorter.colorHighlight);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="540" y="430" width="20" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="groupColorLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="groupColorLabel.text"/>
+            <Property name="name" type="java.lang.String" value="groupColorLabel" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePre" type="java.lang.String" value="groupColorLabel.setText(&quot;subgroup&quot;);"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="570" y="432" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="problemSliderLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Problemsize:&quot;" type="code"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="problemSliderLabel1" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="240" y="30" width="100" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

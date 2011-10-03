@@ -1,18 +1,23 @@
 % To get Umlautes
 %Umlaute ermöglichen
 \usepackage[german]{babel}
-% \usepackage[utf8]{inputenc}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 
 \usepackage[dvips]{graphicx}
 \usepackage{latexsym}
 \usepackage{rotating}
+\usepackage{minted}
+\usemintedstyle{murphy}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+
 
 % To get @webpage style for bib
 % \usepackage[babel,german=quotes]{csquotes}
-\usepackage[style=numeric]{biblatex}
-\bibliography{ref.bib}
+\usepackage[bibstyle=draft,citestyle=authortitle]{biblatex}
 
+\bibliography{ref.bib}
 % Figures floating around text
 \usepackage{wrapfig}
 % Try uncommenting the following line if fonts don't
@@ -49,7 +54,7 @@
 
 % Almost everything is double spaced.
 %
-\newcommand{\spacing}{1.8}
+\newcommand{\spacing}{1}
 \renewcommand{\baselinestretch}{\spacing}
 
 % Footnotes are to be single spaced.
@@ -70,7 +75,8 @@
 	\normalsize
 	\def\muncite{#1}
 	\vspace{1.5mm}
-	\begin{quote}\sl``}{''\muncite
+	\begin{quote}
+        \sl``}{''\muncite
 	\end{quote}
 	\renewcommand{\baselinestretch}{\spacing}%
 	\normalsize
@@ -137,7 +143,12 @@ FOS/BOS Technik \hfill München
 		\label{fig:#2}
 	\end{figure}
 }
-
+\newcommand{\muneps}[3][scale=1.0]{%
+		\vspace{2mm}
+		\includegraphics[#1]{figures/#2}
+		\caption{#3}
+		\label{fig:#2}
+}
 % \munlepsfig command inserts a figure in landscape mode.  The
 % entire page is rotated to accommodate the figure.  The arguments
 % are the same as for \munepsfig, above
@@ -259,3 +270,5 @@ FOS/BOS Technik \hfill München
 %
 \newtheorem{cor}{Corollary}
 \newtheorem{thm}{Theorem}
+\parindent 2em
+\setlength{\parskip}{1ex}

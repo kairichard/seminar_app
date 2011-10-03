@@ -1,6 +1,6 @@
 SHELL=		/bin/sh
 RM=		/bin/rm
-LATEX=		/usr/texbin/latex
+LATEX=		/usr/texbin/latex -shell-escape
 BIBTEX=		/usr/texbin/bibtex
 DVIPS=		/usr/texbin/dvips -Ppdf
 PS2PDF=		/usr/local/bin/ps2pdf13

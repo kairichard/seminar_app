@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" href="./WrappedClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="465,209,588,233"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="283,299,371,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Tag.html" title="&lt;TABLE&gt;" alt="" coords="16,299,104,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/MethodDoc.html" title="&lt;TABLE&gt;" alt="" coords="416,299,504,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/SeeTag.html" title="&lt;TABLE&gt;" alt="" coords="149,299,237,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/PackageDoc.html" title="&lt;TABLE&gt;" alt="" coords="1869,299,1957,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/FieldDoc.html" title="&lt;TABLE&gt;" alt="" coords="549,299,637,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Type.html" title="&lt;TABLE&gt;" alt="" coords="683,299,771,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/SourcePosition.html" title="&lt;TABLE&gt;" alt="" coords="2003,299,2104,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ParameterizedType.html" title="&lt;TABLE&gt;" alt="" coords="816,299,941,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ConstructorDoc.html" title="&lt;TABLE&gt;" alt="" coords="987,299,1091,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/AnnotationTypeDoc.html" title="&lt;TABLE&gt;" alt="" coords="1136,299,1261,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/AnnotationDesc.html" title="&lt;TABLE&gt;" alt="" coords="1307,299,1413,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/TypeVariable.html" title="&lt;TABLE&gt;" alt="" coords="1459,299,1549,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ParamTag.html" title="&lt;TABLE&gt;" alt="" coords="1595,299,1683,349"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/WildcardType.html" title="&lt;TABLE&gt;" alt="" coords="1728,299,1824,349"/>
+<area shape="rect" href="./WrappedRootDoc.html" title="&lt;TABLE&gt;" alt="" coords="268,113,385,137"/>
+<area shape="rect" href="./UmlGraphDoc.html" title="&lt;TABLE&gt;" alt="" coords="337,17,436,41"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="G" name="G">
+<area shape="rect" href="./Options.html" title="org.umlgraph.doclet.Options" alt="" coords="135,872,388,1219"/>
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="135,872,388,1219"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="493,1277,696,1725"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="493,1277,696,1725"/>
+<area shape="rect" href="./UmlGraph.html" title="org.umlgraph.doclet.UmlGraph" alt="" coords="591,11,769,211"/>
+<area shape="rect" href="./UmlGraph.html" title="&lt;TABLE&gt;" alt="" coords="591,11,769,211"/>
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="603,269,757,427"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="603,269,757,427"/>
+<area shape="rect" href="./OptionProvider.html" title="org.umlgraph.doclet.OptionProvider" alt="" coords="96,485,251,643"/>
+<area shape="rect" href="./OptionProvider.html" title="&lt;TABLE&gt;" alt="" coords="96,485,251,643"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="com.sun.javadoc.RootDoc" alt="" coords="745,961,911,1129"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="745,961,911,1129"/>
+<area shape="rect" href="./SubclassMatcher.html" title="org.umlgraph.doclet.SubclassMatcher" alt="" coords="892,716,1025,799"/>
+<area shape="rect" href="./SubclassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="892,716,1025,799"/>
+<area shape="rect" href="./PatternMatcher.html" title="org.umlgraph.doclet.PatternMatcher" alt="" coords="303,716,420,799"/>
+<area shape="rect" href="./PatternMatcher.html" title="&lt;TABLE&gt;" alt="" coords="303,716,420,799"/>
+<area shape="rect" href="./InterfaceMatcher.html" title="org.umlgraph.doclet.InterfaceMatcher" alt="" coords="719,716,847,799"/>
+<area shape="rect" href="./InterfaceMatcher.html" title="&lt;TABLE&gt;" alt="" coords="719,716,847,799"/>
+<area shape="rect" href="./ContextMatcher.html" title="org.umlgraph.doclet.ContextMatcher" alt="" coords="516,701,673,813"/>
+<area shape="rect" href="./ContextMatcher.html" title="&lt;TABLE&gt;" alt="" coords="516,701,673,813"/>
+<area shape="rect" href="./ClassMatcher.html" title="org.umlgraph.doclet.ClassMatcher" alt="" coords="625,515,735,613"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="625,515,735,613"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" href="./ClassGraph.html" title="org.umlgraph.doclet.ClassGraph" alt="" coords="16,270,235,1144"/>
+<area shape="rect" href="./ClassGraph.html" title="&lt;TABLE&gt;" alt="" coords="16,270,235,1144"/>
+<area shape="rect" href="./Options.html" title="org.umlgraph.doclet.Options" alt="" coords="309,1635,563,1982"/>
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="309,1635,563,1982"/>
+<area shape="rect" href="./OptionProvider.html" title="org.umlgraph.doclet.OptionProvider" alt="" coords="588,1203,743,1360"/>
+<area shape="rect" href="./OptionProvider.html" title="&lt;TABLE&gt;" alt="" coords="588,1203,743,1360"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="148,2040,351,2488"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="148,2040,351,2488"/>
+<area shape="rect" href="./UmlGraph.html" title="org.umlgraph.doclet.UmlGraph" alt="" coords="576,11,755,211"/>
+<area shape="rect" href="./UmlGraph.html" title="&lt;TABLE&gt;" alt="" coords="576,11,755,211"/>
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="839,1419,993,1576"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="839,1419,993,1576"/>
+<area shape="rect" href="./PackageView.html" title="org.umlgraph.doclet.PackageView" alt="" coords="588,1427,743,1568"/>
+<area shape="rect" href="./PackageView.html" title="&lt;TABLE&gt;" alt="" coords="588,1427,743,1568"/>
+<area shape="rect" href="./ContextView.html" title="org.umlgraph.doclet.ContextView" alt="" coords="233,1419,391,1576"/>
+<area shape="rect" href="./ContextView.html" title="&lt;TABLE&gt;" alt="" coords="233,1419,391,1576"/>
+</map>

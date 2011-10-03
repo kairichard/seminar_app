@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>Class Diagram Example: Multiple Views Through Command-Line Options</title>
+
+<meta name="Generator" content="$Id: thread.pl 1.62 2006/09/19 16:53:01 dds Exp $" />
+<meta name="Author" content="Diomidis Spinellis" />
+<meta http-equiv="Content-Language" content="en" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:dds@aueb.gr" />
+<link rel="ToC" href="index.html" />
+<link rev="Subdocument" href="index.html" />
+<link rel="previous" href="./ceg-color.html" />
+<link rel="next" href="./ceg-view-spec.html" />
+
+<style type="text/css">
+p.footer {font-size: 70%}
+pre { padding:4px; background-color: #eeeeee; border: 1px solid #000080;  }
+p.footer { FONT-FAMILY: tahoma; FONT-SIZE: 70%; COLOR: #505050; MARGIN-TOP: 0px; }
+h1 { background-color: #ffff99; border-left: #a0a0a0 10px solid; padding: 1px 4px 1px 15px; }
+hr { height: 1px; margin-top:1em; }
+</style>
+</head>
+<body>
+<h1>Class Diagram Example: Multiple Views Through Command-Line Options</h1>
+<!-- $Id: ceg-mv.xml,v 1.3 2007/11/27 09:04:22 dds Exp $ -->
+
+Vadim Nasardinov noted that an advantage of UMLGraph over many
+GUI-oriented UML drawing tools is the ability
+to generate different views of a diagram
+from the same source description.
+The following two diagrams were generated from the same source;
+a Makefile illustrates a way to organize this process.
+<h2>Class Overview</h2>
+<img src="Root-small.png" alt="Class overview" />
+
+<h2>Detailed Class View</h2>
+<img src="Root.png" alt="Detailed class view" />
+
+<h2>Java Description</h2>
+<pre>
+<font color="#0000ff">// Author:  Vadim Nasardinov</font>
+<font color="#0000ff">// Version: $Id: ceg-mv.xml,v 1.3 2007/11/27 09:04:22 dds Exp $</font>
+
+<font color="#a020f0">import</font> java.util.List;
+<font color="#a020f0">import</font> java.util.Map;
+
+<font color="#0000ff">/**</font>
+<font color="#0000ff"> </font><font color="#0000ff">* @assoc &quot;1..1&quot; - &quot;0..n&quot; Adapter</font>
+<font color="#0000ff"> * @assoc &quot;&quot; - &quot;0..n&quot; ObjectType</font>
+<font color="#0000ff"> * @assoc &quot;&quot; - &quot;0..n&quot; ObjectMap</font>
+<font color="#0000ff"> * @assoc &quot;&quot; - &quot;0..n&quot; Table</font>
+<font color="#0000ff"> * @assoc &quot;&quot; - &quot;0..n&quot; DataOperation</font>
+<font color="#0000ff"> **/</font>
+<font color="#2e8b57"><b>class</b></font> Root {
+    <font color="#2e8b57"><b>private</b></font> Map m_adapters;
+    <font color="#2e8b57"><b>private</b></font> List m_types;
+    <font color="#2e8b57"><b>private</b></font> List m_maps;
+    <font color="#2e8b57"><b>private</b></font> List m_tables;
+    <font color="#2e8b57"><b>private</b></font> List m_ops;
+
+    <font color="#2e8b57"><b>public</b></font> Adapter getAdapter(Class klass) {}
+}
+
+<font color="#2e8b57"><b>class</b></font> Adapter {
+    <font color="#2e8b57"><b>public</b></font> Root getRoot();
+}
+
+<font color="#2e8b57"><b>abstract</b></font> <font color="#2e8b57"><b>class</b></font> Element {
+    Root getRoot() {}
+}
+
+<font color="#2e8b57"><b>class</b></font> ObjectType <font color="#2e8b57"><b>extends</b></font> Element {}
+
+<font color="#0000ff">/**</font>
+<font color="#0000ff"> </font><font color="#0000ff">* @has &quot;1..1&quot; - &quot;1..1&quot; ObjectType</font>
+<font color="#0000ff"> **/</font>
+<font color="#2e8b57"><b>class</b></font> ObjectMap <font color="#2e8b57"><b>extends</b></font> Element {
+    <font color="#2e8b57"><b>private</b></font> ObjectType m_type;
+}
+
+<font color="#2e8b57"><b>class</b></font> Table <font color="#2e8b57"><b>extends</b></font> Element {}
+
+<font color="#2e8b57"><b>class</b></font> DataOperation <font color="#2e8b57"><b>extends</b></font> Element {}
+</pre>
+<h2>Makefile</h2>
+<pre>
+<font color="#0000ff"># Author:  Vadim Nasardinov (vadimn@redhat.com)</font>
+<font color="#0000ff"># Since:   2004-05-26</font>
+<font color="#0000ff"># Version: $Id: ceg-mv.xml,v 1.3 2007/11/27 09:04:22 dds Exp $</font>
+<font color="#0000ff"># See:     <a href="http://www.spinellis.gr/sw/umlgraph/doc/ceg-mv.html">http://www.spinellis.gr/sw/umlgraph/doc/ceg-mv.html</a></font>
+
+<font color="#0000ff"># Requires: graphviz</font>
+<font color="#0000ff"># Requires: javadoc</font>
+<font color="#0000ff"># Requires: JAVA_HOME/lib/tools.jar</font>
+
+<font color="#804040"><b>.PHONY :</b></font> clean all dot png
+
+<font color="#008080">UMLGRAPH  </font>:= /var/vadim/binaries/UMLGraph-4.8
+<font color="#008080">uml_graph </font>:= <font color="#008080">$(UMLGRAPH)</font>/lib/UmlGraph.jar
+
+<font color="#008080">java_files </font>:= <font color="#008080">$(</font><font color="#804040"><b>shell</b></font><font color="#008080"> find diagrams -name *.java)</font>
+<font color="#008080">dot_files  </font>:= <font color="#008080">$(</font><font color="#804040"><b>subst</b></font><font color="#008080"> .java,.dot,$(java_files))</font>
+<font color="#008080">dot_files  </font>:= <font color="#008080">$(</font><font color="#804040"><b>foreach</b></font><font color="#008080"> dot, $(dot_files), build/$(dot))</font>
+<font color="#008080">dot_files  </font>+= <font color="#008080">$(</font><font color="#804040"><b>subst</b></font><font color="#008080"> .dot,-small.dot,$(dot_files))</font>
+
+<font color="#008080">png_files </font>:= <font color="#008080">$(</font><font color="#804040"><b>subst</b></font><font color="#008080"> .dot,.png,$(dot_files))</font>
+
+<font color="#008080">jd</font>:=javadoc
+<font color="#008080">jd_flags </font>:= -docletpath <font color="#008080">$(uml_graph)</font> -doclet org.umlgraph.doclet.UmlGraph -private
+
+<font color="#008080">jd_flags </font>+= -nodefontsize 9 -edgefontsize 9
+<font color="#008080">jd_flags </font>+= -nodefillcolor LemonChiffon
+<font color="#008080">detailed_flags </font>:= -attributes -operations -types
+
+<font color="#008080">all:</font> png
+
+<font color="#008080">clean:</font>
+<font color="#ff00ff">        rm -rf build</font>
+
+<font color="#008080">build/%.dot :</font> <font color="#008080">%</font>.java
+<font color="#ff00ff">        mkdir -p </font><font color="#008080">$(</font><font color="#804040"><b>dir</b></font><font color="#008080"> $@)</font>
+<font color="#ff00ff">        </font><font color="#008080">$(jd)</font><font color="#ff00ff"> </font><font color="#008080">$(jd_flags)</font><font color="#ff00ff"> </font><font color="#008080">$(detailed_flags)</font><font color="#ff00ff"> -output </font><font color="#008080">$@</font><font color="#ff00ff"> </font><font color="#008080">$&lt;</font>
+
+<font color="#008080">build/%-small.dot :</font> <font color="#008080">%</font>.java
+<font color="#ff00ff">        mkdir -p </font><font color="#008080">$(</font><font color="#804040"><b>dir</b></font><font color="#008080"> $@)</font>
+<font color="#ff00ff">        </font><font color="#008080">$(jd)</font><font color="#ff00ff"> </font><font color="#008080">$(jd_flags)</font><font color="#ff00ff"> -output </font><font color="#008080">$@</font><font color="#ff00ff"> </font><font color="#008080">$&lt;</font>
+
+<font color="#008080">%.png :</font> <font color="#008080">%</font>.dot
+<font color="#ff00ff">        dot -Nheight=0.2 -Elabelfontcolor=DarkSlateBlue -Elabelfontsize=8 -Tpng -o </font><font color="#008080">$@</font><font color="#ff00ff"> </font><font color="#008080">$&lt;</font>
+
+<font color="#008080">build/%.png :</font> <font color="#008080">%</font>.fig
+<font color="#ff00ff">        mkdir -p </font><font color="#008080">$(</font><font color="#804040"><b>dir</b></font><font color="#008080"> $@)</font>
+<font color="#ff00ff">        fig2dev -L png -S 4 </font><font color="#008080">$&lt;</font><font color="#ff00ff"> </font><font color="#008080">$@</font>
+
+<font color="#008080">dot:</font> <font color="#008080">$(dot_files)</font>
+
+<font color="#008080">png:</font> <font color="#008080">$(png_files)</font>
+
+<font color="#008080">build/%.png :</font> <font color="#008080">%</font>.png
+<font color="#ff00ff">        mkdir -p </font><font color="#008080">$(</font><font color="#804040"><b>dir</b></font><font color="#008080"> $@)</font>
+<font color="#ff00ff">        cp </font><font color="#008080">$&lt;</font><font color="#ff00ff"> </font><font color="#008080">$@</font>
+
+<font color="#0000ff"># Example usage:</font>
+<font color="#0000ff">#   make debug-java_files</font>
+<font color="#0000ff">#   make debug-png_files</font>
+<font color="#008080">debug-</font><font color="#008080">%</font><font color="#008080">:</font>
+<font color="#6a5acd">        @</font><font color="#ff00ff">echo </font><font color="#008080">$*</font><font color="#ff00ff"> is </font><font color="#008080">$($*)</font>
+</pre>
+<p>
+<table width="100%"><tr><td class="navigate"><a href="index.html" accesskey="C" id="contents">Contents</a> </td><td align="right" class="navigate"><a href="./ceg-color.html" accesskey="P" id="previous">&laquo;&nbsp;Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./ceg-view-spec.html" accesskey="N" id="next">Next (Class Diagram Example: Inner support for views)&nbsp;&raquo;</a></td></tr></table></p>
+
+
+<hr /> <p class="footer">
+<!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/gr/deed.en"><img align="left" alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a>
+&nbsp;Last change: Tuesday, November 27, 2007 11:04 am
+<br />
+&nbsp;Unless otherwise expressly stated, all original material on this page
+created by Diomidis Spinellis is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/gr/deed.en">Creative Commons Attribution-Share Alike 3.0 Greece License</a>.
+</p>
+</body>
+</html>

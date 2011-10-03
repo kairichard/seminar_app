@@ -1,0 +1,176 @@
+\chapter{IT-Konzept}
+
+\section{Logische Einheiten}
+
+In den nächsten Abschnitten möchte ich auf die verschieden Logischen Einheiten eingehen. Logische Einheiten
+sind Komponenten oder auch Klassen die ein klar diffenrzierbare Aufgabe innerhalb der Applikation haben.
+
+\subsection{App, main() und View}
+Um es gleich vorweg zuschicken, die Klasse App.java ist nicht von mir sondern bei der erstellung eine neuen
+Projekts von Netbeans\footnote{NetBeans IDE 7.0 (Build 201104080000)} erstellt worden.
+Die Klasse enthält die main()-Methode welche zum starten einer jeden Java-Applikation benötigt wird.
+In der Klasse App findet mann eine Methode welche die Klasse View.java instanziert.
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\begin{listing}[H]
+    \begin{minted}[bgcolor=bg]{java}
+        /**
+         * At startup create and show the main frame of the application.
+         */
+        @Override protected void startup() {
+            show(new View(this));
+        }
+    
+    \end{minted}
+    \caption{Methode startup ( App.java Z.18-20 )}
+    \label{code:app:startup}
+\end{listing}
+
+\subsubsection{View.java}
+In dieser Klasse findet man alle Methoden wieder die zur generierung der einzelen Steuerelemente dienen.
+Ferner werden alle Balkendiagramme und deren zugehörige Algorithmen instanziert, hinzukommen alle Eventhandler
+mit denen die Anwendereingabe an die richtige Stelle delegiert wird.
+
+\subsection{RunnableSortingCollection}
+RunnableSortingCollection\footnote{"`There are only two hard things in Computer Science: cache invalidation and naming things"' - Phil Karlton} 
+- wie der name schon andeutet beinhaltet eine Instanz dieser Klasse alle Sortieralgorithmen, sofern programmatisch hinzugefügt, und delegiert
+eventuelle Steuerbefehle, wie zum Beispiel das Starten des Sortiervorgangs, an all jene Sortieralgorithmen. Mann könnte auch sagen das die Klasse der 
+Kommunikation zwischen Nutzeroberfläche oder auch Nutzer und den Algorithmen dient.
+
+\subsection{SynchronizedSorter}
+Wie zu Anfang beschrieben braucht es Logik um zu gewährleisten das der Ablauf des Sortierens paralell und synchron über den ganzen
+"`existenz Zeitraum"' der Applikation bleibt. Erreicht wird dieses Verhalten durch die Nutzung von Nativ-Threads und der tatsache 
+das es seit Java 5\footnote{siehe http://download.oracle.com/javase/tutorial/essential/concurrency/} möglich ist das ein Thread eine anderen sogenannte Messages
+senden kann.
+
+\subsection{VisualFeedbackSorter}
+Eine weiter wichtige, wenn nicht sogar die wichtigeste, Komponenten der Applikation ist der "`VisualFeedbackSorter"' welche für die visuelle repränstation 
+der internen Sortiervogänge zuständigt ist.
+\newpage
+
+\subsection{Die Klasse AbstractSortingMechanics und das Interface Sorter}
+\munepsfig[scale=0.7]{abstractsortingmechanics}{Klassenkarte von AbstractSortingMechanics.java und Sorter.java}
+Das Interface Sorter und die Klasse AbstractSortingMechanics bilden die Basis für den ~\ref{sec:decoratorpattern}
+beschrieben Decorator-Pattern aber prinzipell bilden diese Struckturen die Basis für alle Klassen die sich wie ein Algorithmus verhalten sollen.
+
+\noindent(vgl. Abb. \ref{fig:classdiagramm})
+
+\section{Erläuterung wichtiger Entwurfsmuster}
+In meiner Ausbildung zum Mediengestalter und in der Zeit als frei Programmiere, habe ich mich immer wieder verschiedener Entwurfsmuster bedient,
+denn sie benennen, abstrahieren und indentifiziern die Kernaspekte einer wiederkehrenden herrangehensweise und schaffen somit wiederverwendbare
+Objekte-Orientierte Lösungen.\parencite[S.3]{designpatterns}   
+
+\subsection{Decorator-Pattern}
+\label{sec:decoratorpattern}
+\begin{munquote}[\parencite{decoratorpattern}]
+Mit dem Decorator Pattern, in der deutschen Übersetzung naheliegenderweise Dekorierer genannt, 
+lässt sich ein Objekt dynamisch um Fähigkeiten, auch Zuständigkeiten genannt, erweitern. 
+Anstatt Unterklassen zu bilden und eine Klasse damit um Fähigkeiten bzw. Verhalten zu erweitern, lässt sich mit dem Einsatz des Decorator Patterns 
+die Erzeugung von Unterklassen vermeiden
+\end{munquote}
+\parencite[vgl. S.175-184][]{designpatterns} 
+\subsubsection{AbstractSortingDecorator}
+Diese Klasse bildet die Grundlage für den Decorator-Pattern und wird an VisualFeedbackSorter und SynchronizedSorter weitervererbt.
+Instanziert mann einen dieser Dekoratoren und übergibts ihm das zu dekorierende Objekt so verhält sich dieses nach außen hin 
+exakt genauso wie das übergeben Objekt, genau darin liegt die Stärke diese Entwurfsmuster welches sich im Konstrucktur von View.app zeigt.
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\begin{listing}[H]
+    \begin{minted}[bgcolor=bg,fontsize=\scriptsize,gobble=7]{java}
+        Sorter bubblesort    = new SynchronizedSorter(new VisualFeedbackSorter(new Bubblesort()));
+        Sorter quicksort     = new SynchronizedSorter(new VisualFeedbackSorter(new Quicksort()));
+        Sorter heapsort      = new SynchronizedSorter(new VisualFeedbackSorter(new Heapsort()));
+        Sorter insertionsort = new SynchronizedSorter(new VisualFeedbackSorter(new Insertionsort()));
+        Sorter mergesort     = new SynchronizedSorter(new VisualFeedbackSorter(new Mergesort()));    
+    \end{minted}
+    \caption{Instanzierung und dekorierung aller Algorithmen( View.java Z.69-73 )}
+    \label{code:app:startup}
+\end{listing}
+Nachwievor verhalten sich alle Algorithmen nach außen wie ein Sorter, nur sind jetzt alle Methoden dekoriert, das heißt würde mann auf
+\texttt{bubblesort} nun eine Method aufrufen so würde sie von \texttt{SynchronizedSorter} über \texttt{VisualFeedbackSorter} bis \texttt{Bubblesort}
+durch gereicht werden. Zugleich kann jeder dieser Dekorierer auch eigenen Code ausführen.
+Das entscheidende Merkmal ist das \texttt{SynchronizedSorter} und auch \texttt{VisualFeedbackSorter} in den Konstrucktoren den übergebenem 
+Parameter in einem Feld speichen.
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\begin{listing}[H]
+    \begin{minted}[bgcolor=bg]{java}
+public abstract class AbstractSortingDecorator 
+  extends AbstractSortingMechanics {
+    protected final Sorter algorithm;
+
+    public AbstractSortingDecorator(Sorter algorithm) {
+        this.algorithm = algorithm;
+    }
+} 
+    \end{minted}
+    \caption{ Konstrucktor ( AbstractSortingDecorator.java Z.11-29. )}
+    \label{code:app:startup}
+\end{listing}
+Und zweitens das die erbenden Klassen diese Feld zur "`weitereichung"' benutzen. ( siehe Listing \ref{code:ss:swap} Z.18 )
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\begin{listing}[H]
+    \begin{minted}[bgcolor=bg,linenos=true]{java}
+public class SynchronizedSorter extends AbstractSortingDecorator {
+
+    public SynchronizedSorter(Sorter algorithm) {
+        super(algorithm);
+    }
+
+    @Override
+    public void swap(int m, int n) {
+        synchronized (super.algorithm) {
+            try {
+                super.algorithm.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SynchronizedSorter.class.getName())
+            .log(Level.SEVERE, null, ex);
+            }
+        }
+        algorithm.swap(m, n);
+    }
+    \end{minted}
+    \caption{ Beispiel einer Dekoration ( SynchronizedSorter.java Z.20-36. )}
+    \label{code:ss:swap}
+\end{listing}
+
+\section{Erläuterung besondere Implementationen}
+\subsection{Die Klasse "`SynchronizedSorter"'}
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+\vspace{-40pt}
+  \begin{center}
+    \muneps[scale=0.6]{synchronizedsorter}{Klassenkarte}
+  \end{center}
+  \vspace{-20pt}
+  \vspace{-10pt}
+\end{wrapfigure}
+Wie in Listing \ref{code:ss:swap} bereits gezeigt erbt die Klasse von \texttt{AbstractSortingDecorator} und dieser wiederum von \texttt{AbstractSortingMechanics}. 
+Die Methoden \newline \texttt{swap,compare,assign,getProblemValueAt} werden herbei wie schon 
+in \ref{code:ss:swap} gezeigt mit einem \texttt{Try-and-Catch-Block} in \texttt{SynchronizedSorter} implementiert. Das hat zurfolge,
+immer wenn eine dieser Methoden aufgerufen werden der laufende Thread ersteinmal wartet (\ref{code:ss:swap} Z.11) bis irgendwo auf dem selben 
+Object ein \texttt{notify()} aufgerufen wird. Und schon hat man die Ausführung synchronisiert.
+
+\subsubsection{Synchronisierte Threads}
+\label{sec:imp:syncsort}
+Bei der beschrieben Applikation gibts es insgesamt für jeden Algorithmus einen Thread sowie eine Main-Thread, in dem der MainFrame läuft, einen Timer-Thread und noch eine Reihe Threads aus dem
+Swing-Threadpool auf die ich hier aber nicht eingehen werde.
+
+Stellt mann sich nun der einfachheit habler vor alle Algorithmen wollen eine \texttt{swap} Operation durchführen so wird diese Methode aufgerufen
+und landet schluss endlich irgendwann in dem gezeigt Sourecode Beispiel aus \ref{code:ss:swap} und muss dort nun verharren, bis und jetzt kommt der springende
+Punkt, in dem Timer-Thread der Java Timer über alle Algorithmen in \texttt{RunnableSortingCollection} enthalten sind iteriert und ein \texttt{notify()} über das 
+Algorithmus-Object senden auf welches die Algorithmen in \texttt{swap} warten. 
+
+Das Interval mit dem die Timer Klasse das tut kann der Anwender einstellen, von
+500ms bis 20ms. Oder auch kann der Anwender den Timer anhalten und die Applikation manuell anweisen ein \texttt{notify()} an alle Algorithmen
+zusenden.
+\subsection{Die Klasse "`VisualFeedbackSorter"'}
+Diese Klasse baut zum Start der Applikation, mit hilf der Charting-Bibliothek jChart2D, das Balkendiagramm für den übergebenen Algorithmus auf und speicher
+die Instanz in einem Feld. Tritt nun der Fall wie in \ref{sec:imp:syncsort} auf so wird das Chart angewießen die entsprechenden Balken mit einer Farbe zuhinterlegen.
+\subsection{Die Klasse \texttt{Surveyor}}
+Am Rande zuerwähnen aber dennoch interessant ist der Surveyor welcher, wenn ein Integer Array übergeben bekommt, die Sortiertheit im Rahmen von 
+0.0 bis 1.0 wiedergeben kann. Dabei wird die distanz eine Elements zu seiner eigentlichen Position bestimmt, diese Entfernungen werden aufsummiert 
+und durch die maximale möglich gesamt Entfernung geteilt. Bei einer länge von $n$ ergibt das eine maximal Entfernung von $n^2$.
+Die Methodik wird für die Auswertung am Ende eines jeden Sortiervorgangs benutzt.
+\newpage
+\section{Klassendiagramm}
+\munepsfig[scale=0.73]{classdiagramm}{Klassendiagramm aller wichtigen Komponenten}

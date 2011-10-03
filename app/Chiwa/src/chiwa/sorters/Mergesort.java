@@ -6,7 +6,8 @@ package chiwa.sorters;
 
 import fosbos.seminar.sorting.AbstractSortingMechanics;
 import fosbos.seminar.sorting.Sorter;
-import java.util.Arrays;
+import fosbos.seminar.sorting.decorators.SynchronizedSorter;
+import fosbos.seminar.sorting.decorators.VisualFeedbackSorter;
 
 /**
  *
@@ -21,10 +22,11 @@ public class Mergesort extends AbstractSortingMechanics implements Sorter {
                 ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(true);
 		mergesort(0, problem.length - 1);
                 ((AbstractSortingMechanics)decoratedAlgorithm).setRunning(false);
-                System.out.println("Mergesort"+Arrays.toString(problem));
+                // System.out.println("Mergesort"+Arrays.toString(problem));
 	}
 
 	public void mergesort(int low, int high) {
+                ((SynchronizedSorter)decoratedAlgorithm).highlightRange(low, high, VisualFeedbackSorter.colorHighlight);
 		// Check if low is smaller then high, if not then the array is sorted
 		if (low < high) {
 			// Get the index of the element which is in the middle
@@ -45,7 +47,7 @@ public class Mergesort extends AbstractSortingMechanics implements Sorter {
 
 		// Copy both parts into the helper array
 		for (int i = low; i <= high; i++) {
-			helper[i] = problem[i];
+			helper[i] = decoratedAlgorithm.getProblemValueAt(i);
 		}
 
 		int i = low;
@@ -54,6 +56,7 @@ public class Mergesort extends AbstractSortingMechanics implements Sorter {
 		// Copy the smallest values from either the left or the right side back
 		// to the original array
 		while (i <= middle && j <= high) {
+                        decoratedAlgorithm.compare(i, j);
 			if (helper[i] <= helper[j]) {
                                 decoratedAlgorithm.assign(k, helper[i]);
 				// problem[k] = helper[i];

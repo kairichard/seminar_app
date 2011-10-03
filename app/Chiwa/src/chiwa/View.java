@@ -28,22 +28,22 @@ import javax.swing.JFrame;
  * The application's main frame.
  */
 public class View extends FrameView {
-    /* Enthält alle Dekorierten Sortiere */
+    /** Enthält alle Dekorierten Sortiere */
     protected RunnableSortingCollectionDelegator sorters = new RunnableSortingCollectionDelegator();
     
-    /* Timer der alle #busyAnimationRate das Bild des Icons ändert - dadurch entsteht die Rotation */
+    /** Timer der alle #busyAnimationRate das Bild des Icons ändert - dadurch entsteht die Rotation */
     private Timer busyIconTimer;
     
-    /* Prozess-Indikator im ruhenden Zustand */
+    /** Prozess-Indikator im ruhenden Zustand */
     private Icon idleIcon;
     
-    /* Array aller Prozess-Indikator zustände*/
+    /** Array aller Prozess-Indikator zustände*/
     private Icon[] busyIcons = new Icon[15];
     
-    /* Enthält den Index des letzten Icons */
+    /** Enthält den Index des letzten Icons */
     private int busyIconIndex = 0;
     
-    /* View für den 'Über' Dialog  */
+    /** View für den 'Über' Dialog  */
     private JDialog aboutBox;
 
     /**
@@ -52,7 +52,9 @@ public class View extends FrameView {
      */
     public View(SingleFrameApplication app) {
         super(app);
-
+        
+        RunnableSortingCollectionDelegator.stepInterval = 250;
+        
         initComponents();
         initStatusBar();
         
@@ -65,25 +67,26 @@ public class View extends FrameView {
 
         // SynchronizedSorter->VisualFeedbackSorter->Sorter
         Sorter bubblesort = new SynchronizedSorter(new VisualFeedbackSorter(new Bubblesort()));
-        Sorter heapsort  = new SynchronizedSorter(new VisualFeedbackSorter(new Heapsort()));
-        Sorter quicksort = new SynchronizedSorter(new VisualFeedbackSorter(new Quicksort()));
-        Sorter mergesort = new SynchronizedSorter(new VisualFeedbackSorter(new Mergesort()));
+        Sorter quicksort  =  new SynchronizedSorter(new VisualFeedbackSorter(new Quicksort()));
+        Sorter heapsort =  new SynchronizedSorter(new VisualFeedbackSorter(new Heapsort()));
         Sorter insertionsort = new SynchronizedSorter(new VisualFeedbackSorter(new Insertionsort()));
+        Sorter mergesort =  new SynchronizedSorter(new VisualFeedbackSorter(new Mergesort()));
 
         /**
          * Hier verbiergt sich meiner Meinung nach die einzige schwäche
          * der vorhanden "dekoriere" - da nur #sort aufgerufen wird, kann z.B. der
-         * Heapsort-Algorithmus nicht mehr in seiner #sort Methode nicht mehr
+         * Heapsort-Algorithmus bzw der SynchronizedSorter nicht mehr in seiner 
+         * #sort Methode
          * auf die dekorierten Methoden zugreifen.
          * 
          * Deshalb wird jeden Sorter noch mal sein dekoriertes selbst 
          * übergeben
          */
-        bubblesort.setDecoratedAlgorithem(bubblesort);
-        heapsort.setDecoratedAlgorithem(heapsort);
-        quicksort.setDecoratedAlgorithem(quicksort);
-        mergesort.setDecoratedAlgorithem(mergesort);
-        insertionsort.setDecoratedAlgorithem(insertionsort);
+        bubblesort.setDecoratedAlgorithm(bubblesort);
+        heapsort.setDecoratedAlgorithm(heapsort);
+        quicksort.setDecoratedAlgorithm(quicksort);
+        mergesort.setDecoratedAlgorithm(mergesort);
+        insertionsort.setDecoratedAlgorithm(insertionsort);
         
         sorters.add(bubblesort);
         sorters.add(heapsort);
@@ -93,7 +96,6 @@ public class View extends FrameView {
         
         sorters.setProblem(SortingProblemCreator.random(problemSizeSlider.getValue()));
 
-        RunnableSortingCollectionDelegator.stepInterval = 50;
 
         startStatusbarUpdateHandler();
 
@@ -177,13 +179,26 @@ public class View extends FrameView {
         problemSetType = new javax.swing.JComboBox();
         problemSizeSlider = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        problemLabel = new javax.swing.JLabel();
         problemSetSizeIndicator = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         intervalSlider = new javax.swing.JSlider();
-        jLabel3 = new javax.swing.JLabel();
+        intervalSliderLabel = new javax.swing.JLabel();
         intervalLabel = new javax.swing.JLabel();
         updateProblemSetButton = new javax.swing.JButton();
+        assignColorCanvas = new java.awt.Canvas();
+        assignColorLabel = new javax.swing.JLabel();
+        getColorCanvas = new java.awt.Canvas();
+        getColorLabel = new javax.swing.JLabel();
+        compareColorLabel = new javax.swing.JLabel();
+        compareLeftColorCanvas = new java.awt.Canvas();
+        compareRightColorCanvas = new java.awt.Canvas();
+        swapColorLabel = new javax.swing.JLabel();
+        swapLeftColorCanvas = new java.awt.Canvas();
+        swapRightColorCanvas = new java.awt.Canvas();
+        groupColorCanvas = new java.awt.Canvas();
+        groupColorLabel = new javax.swing.JLabel();
+        problemSliderLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -201,8 +216,7 @@ public class View extends FrameView {
         mainPanel.setSize(mainPanel.getPreferredSize());
         mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(chiwa.App.class).getContext().getResourceMap(View.class);
-        runButton.setText(resourceMap.getString("runButton.text")); // NOI18N
+        runButton.setText("sort");
         runButton.setName("runButton"); // NOI18N
         runButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +225,7 @@ public class View extends FrameView {
         });
         mainPanel.add(runButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 470, -1, -1));
 
-        stepButton.setText(resourceMap.getString("stepButton.text")); // NOI18N
+        stepButton.setText("step");
         stepButton.setEnabled(false);
         stepButton.setName("stepButton"); // NOI18N
         stepButton.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +235,7 @@ public class View extends FrameView {
         });
         mainPanel.add(stepButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
 
-        pauseButton.setText(resourceMap.getString("pauseButton.text")); // NOI18N
+        pauseButton.setText("pause");
         pauseButton.setEnabled(false);
         pauseButton.setName("pauseButton"); // NOI18N
         pauseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +245,7 @@ public class View extends FrameView {
         });
         mainPanel.add(pauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
-        problemSetType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Random", "Reverse", "Flat", "Predefined" }));
+        problemSetType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Random", "Reverse", "Stairs", "Predefined" }));
         problemSetType.setName("problemSetType"); // NOI18N
         mainPanel.add(problemSetType, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 25, -1, -1));
 
@@ -253,9 +267,12 @@ public class View extends FrameView {
         jLabel1.setName("jLabel1"); // NOI18N
         mainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-        mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        problemLabel.setText("Problem:");
+        problemLabel.setName("problemSetSizeDescLabel"); // NOI18N
+        problemLabel.setOpaque(true);
+        mainPanel.add(problemLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 80, -1));
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(chiwa.App.class).getContext().getResourceMap(View.class);
+        problemLabel.getAccessibleContext().setAccessibleName(resourceMap.getString("problemSetSizeDescLabel.AccessibleContext.accessibleName")); // NOI18N
 
         problemSetSizeIndicator.setText(resourceMap.getString("problemSetSizeIndicator.text")); // NOI18N
         problemSetSizeIndicator.setName("problemSetSizeIndicator"); // NOI18N
@@ -266,12 +283,12 @@ public class View extends FrameView {
         jSeparator1.setName("jSeparator1"); // NOI18N
         mainPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 930, -1));
 
-        intervalSlider.setMajorTickSpacing(150);
-        intervalSlider.setMaximum(300);
+        intervalSlider.setMajorTickSpacing(250);
+        intervalSlider.setMaximum(500);
         intervalSlider.setMinimum(20);
         intervalSlider.setMinorTickSpacing(5);
         intervalSlider.setSnapToTicks(true);
-        intervalSlider.setValue(RunnableSortingCollectionDelegator.stepInterval);
+        intervalSlider.setValue(fosbos.seminar.sorting.utils.RunnableSortingCollectionDelegator.stepInterval);
         intervalSlider.setInverted(true);
         intervalSlider.setName("intervalSlider"); // NOI18N
         intervalSlider.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -286,16 +303,17 @@ public class View extends FrameView {
         });
         mainPanel.add(intervalSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, -1));
 
-        jLabel3.setText("Interval:");
-        jLabel3.setName("jLabel3"); // NOI18N
-        mainPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 475, -1, -1));
+        intervalSliderLabel.setText("Interval:");
+        intervalSliderLabel.setName("intervalDescLabel"); // NOI18N
+        mainPanel.add(intervalSliderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 475, -1, -1));
+        intervalSliderLabel.getAccessibleContext().setAccessibleName(resourceMap.getString("intervalDescLabel.AccessibleContext.accessibleName")); // NOI18N
 
         intervalLabel.setText("(0)");
         intervalLabel.setName("intervalLabel"); // NOI18N
         mainPanel.add(intervalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 475, -1, -1));
         intervalLabel.setText("("+intervalSlider.getValue()+" ms)");
 
-        updateProblemSetButton.setText("update");
+        updateProblemSetButton.setText("update/reset");
         updateProblemSetButton.setName("updateProblemSetButton"); // NOI18N
         updateProblemSetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,6 +321,72 @@ public class View extends FrameView {
             }
         });
         mainPanel.add(updateProblemSetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 25, -1, -1));
+        updateProblemSetButton.getAccessibleContext().setAccessibleName(resourceMap.getString("updateProblemSetButton.AccessibleContext.accessibleName")); // NOI18N
+
+        assignColorCanvas.setBackground(resourceMap.getColor("assignColorCanvas.background")); // NOI18N
+        assignColorCanvas.setName("assignColorCanvas"); // NOI18N
+        assignColorCanvas.setBackground(VisualFeedbackSorter.colorAssign);
+        mainPanel.add(assignColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 20, 20));
+
+        assignColorLabel.setText(resourceMap.getString("assignColorLabel.text")); // NOI18N
+        assignColorLabel.setName("assignColorLabel"); // NOI18N
+        assignColorLabel.setText("assign/insert");
+        mainPanel.add(assignColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 432, -1, -1));
+
+        getColorCanvas.setBackground(resourceMap.getColor("getColorCanvas.background")); // NOI18N
+        getColorCanvas.setName("getColorCanvas"); // NOI18N
+        getColorCanvas.setBackground(VisualFeedbackSorter.colorGet);
+        mainPanel.add(getColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 20, 20));
+
+        getColorLabel.setText(resourceMap.getString("getColorLabel.text")); // NOI18N
+        getColorLabel.setName("getColorLabel"); // NOI18N
+        getColorLabel.setText("load");
+        mainPanel.add(getColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 432, -1, -1));
+
+        compareColorLabel.setText(resourceMap.getString("compareColorLabel.text")); // NOI18N
+        compareColorLabel.setName("compareColorLabel"); // NOI18N
+        compareColorLabel.setText("compare");
+        mainPanel.add(compareColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 432, -1, -1));
+
+        compareLeftColorCanvas.setBackground(resourceMap.getColor("compareLeftColorCanvas.background")); // NOI18N
+        compareLeftColorCanvas.setName("compareLeftColorCanvas"); // NOI18N
+        compareLeftColorCanvas.setBackground(VisualFeedbackSorter.colorCompareLeft);
+        mainPanel.add(compareLeftColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 20, 20));
+
+        compareRightColorCanvas.setBackground(resourceMap.getColor("compareRightColorCanvas.background")); // NOI18N
+        compareRightColorCanvas.setName("compareRightColorCanvas"); // NOI18N
+        compareRightColorCanvas.setBackground(VisualFeedbackSorter.colorCompareRight);
+        mainPanel.add(compareRightColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 20, 20));
+
+        swapColorLabel.setText(resourceMap.getString("swapColorLabel.text")); // NOI18N
+        swapColorLabel.setName("swapColorLabel"); // NOI18N
+        swapColorLabel.setText("swap");
+        mainPanel.add(swapColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 432, -1, -1));
+
+        swapLeftColorCanvas.setBackground(resourceMap.getColor("swapLeftColorCanvas.background")); // NOI18N
+        swapLeftColorCanvas.setName("swapLeftColorCanvas"); // NOI18N
+        swapLeftColorCanvas.setBackground(VisualFeedbackSorter.colorSwapLeft);
+        mainPanel.add(swapLeftColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 20, 20));
+
+        swapRightColorCanvas.setBackground(resourceMap.getColor("swapRightColorCanvas.background")); // NOI18N
+        swapRightColorCanvas.setName("swapRightColorCanvas"); // NOI18N
+        swapRightColorCanvas.setBackground(VisualFeedbackSorter.colorSwapRight);
+        mainPanel.add(swapRightColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 20, 20));
+
+        groupColorCanvas.setBackground(resourceMap.getColor("groupColorCanvas.background")); // NOI18N
+        groupColorCanvas.setName("groupColorCanvas"); // NOI18N
+        groupColorCanvas.setBackground(VisualFeedbackSorter.colorHighlight);
+        mainPanel.add(groupColorCanvas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 20, 20));
+
+        groupColorLabel.setText(resourceMap.getString("groupColorLabel.text")); // NOI18N
+        groupColorLabel.setName("groupColorLabel"); // NOI18N
+        groupColorLabel.setText("subgroup");
+        mainPanel.add(groupColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 432, -1, -1));
+
+        problemSliderLabel1.setText("Problemsize:");
+        problemSliderLabel1.setName("problemSliderLabel1"); // NOI18N
+        problemSliderLabel1.setOpaque(true);
+        mainPanel.add(problemSliderLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 100, -1));
 
         menuBar.setName("menuBar"); // NOI18N
 
@@ -423,7 +507,7 @@ public class View extends FrameView {
             sorters.setProblem(SortingProblemCreator.random(problemSizeSlider.getValue()));
         } else if (problemSetType.getSelectedItem() == "Predefined") {
             sorters.setProblem(SortingProblemCreator.predefined(problemSizeSlider.getValue()));
-        } else if (problemSetType.getSelectedItem() == "Flat") {
+        } else if (problemSetType.getSelectedItem() == "Stairs") {
             sorters.setProblem(SortingProblemCreator.flat(problemSizeSlider.getValue()));
         } else if (problemSetType.getSelectedItem() == "Reverse") {
             sorters.setProblem(SortingProblemCreator.reverse(problemSizeSlider.getValue()));
@@ -458,23 +542,36 @@ public class View extends FrameView {
     }//GEN-LAST:event_intervalSliderStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Canvas assignColorCanvas;
+    private javax.swing.JLabel assignColorLabel;
+    private javax.swing.JLabel compareColorLabel;
+    private java.awt.Canvas compareLeftColorCanvas;
+    private java.awt.Canvas compareRightColorCanvas;
+    private java.awt.Canvas getColorCanvas;
+    private javax.swing.JLabel getColorLabel;
+    private java.awt.Canvas groupColorCanvas;
+    private javax.swing.JLabel groupColorLabel;
     private javax.swing.JLabel intervalLabel;
     private javax.swing.JSlider intervalSlider;
+    private javax.swing.JLabel intervalSliderLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JToggleButton pauseButton;
+    private javax.swing.JLabel problemLabel;
     private javax.swing.JLabel problemSetSizeIndicator;
     private javax.swing.JComboBox problemSetType;
     private javax.swing.JSlider problemSizeSlider;
+    private javax.swing.JLabel problemSliderLabel1;
     private javax.swing.JButton runButton;
     private javax.swing.JLabel statusAnimationLabel;
     javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     private javax.swing.JButton stepButton;
+    private javax.swing.JLabel swapColorLabel;
+    private java.awt.Canvas swapLeftColorCanvas;
+    private java.awt.Canvas swapRightColorCanvas;
     private javax.swing.JButton updateProblemSetButton;
     // End of variables declaration//GEN-END:variables
 }

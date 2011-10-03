@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="124,11,279,168"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="124,11,279,168"/>
+<area shape="rect" href="./SubclassMatcher.html" title="org.umlgraph.doclet.SubclassMatcher" alt="" coords="197,384,331,467"/>
+<area shape="rect" href="./SubclassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="197,384,331,467"/>
+<area shape="rect" href="./ClassMatcher.html" title="org.umlgraph.doclet.ClassMatcher" alt="" coords="147,227,256,325"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="147,227,256,325"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="16,525,219,973"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="16,525,219,973"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="com.sun.javadoc.RootDoc" alt="" coords="280,665,445,833"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="280,665,445,833"/>
+</map>

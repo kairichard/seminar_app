@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" href="./Options.html" title="org.umlgraph.doclet.Options" alt="" coords="864,613,1117,960"/>
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="864,613,1117,960"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="703,1018,905,1466"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="703,1018,905,1466"/>
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="225,10,380,168"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="225,10,380,168"/>
+<area shape="rect" href="./ContextMatcher.html" title="org.umlgraph.doclet.ContextMatcher" alt="" coords="600,442,757,554"/>
+<area shape="rect" href="./ContextMatcher.html" title="&lt;TABLE&gt;" alt="" coords="600,442,757,554"/>
+<area shape="rect" href="./ClassMatcher.html" title="org.umlgraph.doclet.ClassMatcher" alt="" coords="197,256,307,354"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="197,256,307,354"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="com.sun.javadoc.RootDoc" alt="" coords="248,702,413,870"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="248,702,413,870"/>
+<area shape="rect" href="./ContextView.html" title="org.umlgraph.doclet.ContextView" alt="" coords="912,226,1069,384"/>
+<area shape="rect" href="./ContextView.html" title="&lt;TABLE&gt;" alt="" coords="912,226,1069,384"/>
+<area shape="rect" href="./ContextMatcher.ClassGraphHack.html" title="org.umlgraph.doclet.ContextMatcher.ClassGraphHack" alt="" coords="613,752,744,821"/>
+<area shape="rect" href="./ContextMatcher.ClassGraphHack.html" title="&lt;TABLE&gt;" alt="" coords="613,752,744,821"/>
+<area shape="rect" href="./ContextMatcher.DevNullWriter.html" title="org.umlgraph.doclet.ContextMatcher.DevNullWriter" alt="" coords="459,737,568,836"/>
+<area shape="rect" href="./ContextMatcher.DevNullWriter.html" title="&lt;TABLE&gt;" alt="" coords="459,737,568,836"/>
+</map>

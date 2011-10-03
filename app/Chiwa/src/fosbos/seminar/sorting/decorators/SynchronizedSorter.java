@@ -6,12 +6,16 @@ package fosbos.seminar.sorting.decorators;
 
 import fosbos.seminar.sorting.Sorter;
 import fosbos.seminar.sorting.AbstractSortingDecorator;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author kai
+ * Dies ist eine Dekorator-Klasse die es einem Sorter erlaubt sich mit 
+ * Threads zu synchronisieren, erreicht wird das in dem alle Methoden
+ * überschrieben werden und die Logik an den eigentlich Sorter 
+ * erst _nach_ einem <code>wait()</code> Aufruf delegiert wird.
+ * @author Kai Richard König
  */
 public class SynchronizedSorter extends AbstractSortingDecorator {
 
@@ -53,6 +57,19 @@ public class SynchronizedSorter extends AbstractSortingDecorator {
         }
         algorithm.assign(m, n);
     }
+    
+    @Override
+    public int getProblemValueAt(int i) {
+        synchronized (super.algorithm) {
+            try {
+                super.algorithm.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SynchronizedSorter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return algorithm.getProblemValueAt(i);
+    }
+
     @Override
     public void sort() {
         algorithm.sort();
@@ -63,7 +80,13 @@ public class SynchronizedSorter extends AbstractSortingDecorator {
         algorithm.setProblem(problem);
     }
 
-    public void setDecoratedAlgorithem(Sorter alog) {
-        algorithm.setDecoratedAlgorithem(alog);
+    @Override
+    public void setDecoratedAlgorithm(Sorter algo) {
+        algorithm.setDecoratedAlgorithm(algo);
+    }
+
+    @Override
+    public void highlightRange(int n, int m, Color color) {
+        ((VisualFeedbackSorter)algorithm).highlightRange(n, m, color);
     }
 }

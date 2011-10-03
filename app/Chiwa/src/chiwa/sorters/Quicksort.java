@@ -6,12 +6,10 @@ package chiwa.sorters;
 
 import fosbos.seminar.sorting.AbstractSortingMechanics;
 import fosbos.seminar.sorting.Sorter;
-import java.util.Arrays;
+import fosbos.seminar.sorting.decorators.SynchronizedSorter;
+import fosbos.seminar.sorting.decorators.VisualFeedbackSorter;
+import java.awt.Color;
 
-/**
- *
- * @author kai
- */
 public class Quicksort extends AbstractSortingMechanics implements Sorter {
 
     public Quicksort() {
@@ -26,33 +24,43 @@ public class Quicksort extends AbstractSortingMechanics implements Sorter {
         ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(true);
 
         // sortiere gesamtes Feld
-        quicksort(0, problem.length-1);
+        quicksort(0, problem.length - 1);
+
         ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(false);
-        System.out.println("Quicksort"+Arrays.toString(problem));
+        // System.out.println("Quicksort"+Arrays.toString(problem));
 
     }
 
-    private void quicksort (int lo, int hi)
-    {
+    private void quicksort(int lo, int hi) {
+        ((SynchronizedSorter)decoratedAlgorithm).highlightRange(lo, hi, VisualFeedbackSorter.colorHighlight);
+
         int i = lo, j = hi;
 
         // Vergleichs­element x
-        int x=(lo+hi)/2;
+        int x = decoratedAlgorithm.getProblemValueAt((lo + hi) / 2);
+        ((SynchronizedSorter)decoratedAlgorithm).highlightRange(lo, hi, VisualFeedbackSorter.colorHighlight);
 
         //  Aufteilung
-        while (i <= j )
-        {    
-            while (decoratedAlgorithm.compare(i, x) == -1) i++; 
-            while (decoratedAlgorithm.compare(j, x) == 1) j--;
-            if (i <= j)
-            {
+        while (i <= j) {
+            while (decoratedAlgorithm.getProblemValueAt(i) < x) {
+                i++;
+            }
+            while (decoratedAlgorithm.getProblemValueAt(j) > x) {
+                j--;
+            }
+            if (i <= j) {
                 decoratedAlgorithm.swap(i, j);
-                i++; j--;
+                i++;
+                j--;
             }
         }
 
         // Rekursion
-        if (lo < j) quicksort(lo, j);
-        if (i < hi) quicksort(i, hi);
+        if (lo < j) {
+            quicksort(lo, j);
+        }
+        if (i < hi) {
+            quicksort(i, hi);
+        }
     }
 }

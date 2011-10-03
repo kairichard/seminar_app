@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="145,408,209,432"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="435,504,523,555"/>
+<area shape="rect" href="./UmlGraph.html" title="&lt;TABLE&gt;" alt="" coords="500,17,577,41"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="516,113,561,137"/>
+<area shape="rect" href="./OptionProvider.html" title="&lt;TABLE&gt;" alt="" coords="75,203,176,240"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="656,395,744,445"/>
+<area shape="rect" href="./ContextMatcher.html" title="&lt;TABLE&gt;" alt="" coords="425,305,532,329"/>
+<area shape="rect" href="./SubclassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="735,305,849,329"/>
+<area shape="rect" href="./PatternMatcher.html" title="&lt;TABLE&gt;" alt="" coords="225,305,329,329"/>
+<area shape="rect" href="./InterfaceMatcher.html" title="&lt;TABLE&gt;" alt="" coords="577,305,689,329"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="492,203,585,240"/>
+</map>

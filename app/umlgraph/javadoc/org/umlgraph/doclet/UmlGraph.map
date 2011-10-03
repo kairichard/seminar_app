@@ -1,0 +1,22 @@
+<map id="G" name="G">
+<area shape="rect" href="./ClassGraph.html" title="org.umlgraph.doclet.ClassGraph" alt="" coords="708,269,927,1144"/>
+<area shape="rect" href="./ClassGraph.html" title="&lt;TABLE&gt;" alt="" coords="708,269,927,1144"/>
+<area shape="rect" href="./Options.html" title="org.umlgraph.doclet.Options" alt="" coords="567,1909,820,2256"/>
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="567,1909,820,2256"/>
+<area shape="rect" href="./OptionProvider.html" title="org.umlgraph.doclet.OptionProvider" alt="" coords="615,1340,769,1497"/>
+<area shape="rect" href="./OptionProvider.html" title="&lt;TABLE&gt;" alt="" coords="615,1340,769,1497"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="877,2314,1080,2762"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="877,2314,1080,2762"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Doc.html" title="com.sun.javadoc.Doc" alt="" coords="361,1202,569,1634"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Doc.html" title="&lt;TABLE&gt;" alt="" coords="361,1202,569,1634"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="com.sun.javadoc.RootDoc" alt="" coords="356,1998,521,2166"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="356,1998,521,2166"/>
+<area shape="rect" href="./UmlGraph.html" title="org.umlgraph.doclet.UmlGraph" alt="" coords="571,10,749,210"/>
+<area shape="rect" href="./UmlGraph.html" title="&lt;TABLE&gt;" alt="" coords="571,10,749,210"/>
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="240,1693,395,1850"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="240,1693,395,1850"/>
+<area shape="rect" href="./Version.html" title="org.umlgraph.doclet.Version" alt="" coords="972,694,1041,718"/>
+<area shape="rect" href="./Version.html" title="&lt;TABLE&gt;" alt="" coords="972,694,1041,718"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/LanguageVersion.html" title="com.sun.javadoc.LanguageVersion" alt="" coords="1137,681,1271,732"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/LanguageVersion.html" title="&lt;TABLE&gt;" alt="" coords="1137,681,1271,732"/>
+</map>

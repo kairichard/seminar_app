@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" href="./Options.html" title="&lt;TABLE&gt;" alt="" coords="180,319,244,343"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="1540,408,1628,459"/>
+<area shape="rect" href="./UmlGraph.html" title="&lt;TABLE&gt;" alt="" coords="845,17,923,41"/>
+<area shape="rect" href="./ClassGraph.html" title="&lt;TABLE&gt;" alt="" coords="1096,113,1181,137"/>
+<area shape="rect" href="./OptionProvider.html" title="&lt;TABLE&gt;" alt="" coords="72,209,173,247"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Doc.html" title="&lt;TABLE&gt;" alt="" coords="1837,203,1925,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/RootDoc.html" title="&lt;TABLE&gt;" alt="" coords="1971,203,2059,253"/>
+<area shape="rect" href="./ContextMatcher.ClassGraphHack.html" title="&lt;TABLE&gt;" alt="" coords="1680,216,1792,240"/>
+<area shape="rect" href="./ClassInfo.html" title="&lt;TABLE&gt;" alt="" coords="269,216,341,240"/>
+<area shape="rect" href="./StringUtil.html" title="&lt;TABLE&gt;" alt="" coords="387,216,456,240"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/MethodDoc.html" title="&lt;TABLE&gt;" alt="" coords="501,203,589,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Parameter.html" title="&lt;TABLE&gt;" alt="" coords="635,203,723,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/FieldDoc.html" title="&lt;TABLE&gt;" alt="" coords="768,203,856,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ParameterizedType.html" title="&lt;TABLE&gt;" alt="" coords="901,203,1027,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ProgramElementDoc.html" title="&lt;TABLE&gt;" alt="" coords="1072,203,1205,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/Type.html" title="&lt;TABLE&gt;" alt="" coords="1251,203,1339,253"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ConstructorDoc.html" title="&lt;TABLE&gt;" alt="" coords="1384,203,1488,253"/>
+</map>

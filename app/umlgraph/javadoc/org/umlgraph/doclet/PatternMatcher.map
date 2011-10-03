@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" href="./View.html" title="org.umlgraph.doclet.View" alt="" coords="109,11,264,168"/>
+<area shape="rect" href="./View.html" title="&lt;TABLE&gt;" alt="" coords="109,11,264,168"/>
+<area shape="rect" href="./PatternMatcher.html" title="org.umlgraph.doclet.PatternMatcher" alt="" coords="16,384,133,467"/>
+<area shape="rect" href="./PatternMatcher.html" title="&lt;TABLE&gt;" alt="" coords="16,384,133,467"/>
+<area shape="rect" href="./ClassMatcher.html" title="org.umlgraph.doclet.ClassMatcher" alt="" coords="75,227,184,325"/>
+<area shape="rect" href="./ClassMatcher.html" title="&lt;TABLE&gt;" alt="" coords="75,227,184,325"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="com.sun.javadoc.ClassDoc" alt="" coords="111,525,313,973"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.5.0/docs/guide/javadoc/doclet/spec/com/sun/javadoc/ClassDoc.html" title="&lt;TABLE&gt;" alt="" coords="111,525,313,973"/>
+</map>

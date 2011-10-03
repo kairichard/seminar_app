@@ -6,6 +6,8 @@ package chiwa.sorters;
 
 import fosbos.seminar.sorting.AbstractSortingMechanics;
 import fosbos.seminar.sorting.Sorter;
+import fosbos.seminar.sorting.decorators.SynchronizedSorter;
+import fosbos.seminar.sorting.decorators.VisualFeedbackSorter;
 import java.util.Arrays;
 
 /**
@@ -25,7 +27,11 @@ public class Heapsort extends AbstractSortingMechanics implements Sorter {
     @Override
     public void sort() {
         ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(true);
+        heapsort();
+        ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(false);
+    }
 
+    private void heapsort() {
         int max = problem.length - 1;
 
         // Den Heap aufbauen.
@@ -33,7 +39,7 @@ public class Heapsort extends AbstractSortingMechanics implements Sorter {
         // betrachtet werden, da die obere Haelfte 
         // nur aus Blaettern besteht. 
         // ( Blaetter sind schon ein Heap. )
-
+        
         for (int i = (max + 1) / 2 - 1; i >= 0; i--) {
             makeheap(problem, i, max);
         }
@@ -49,12 +55,10 @@ public class Heapsort extends AbstractSortingMechanics implements Sorter {
             // einsinken, bis ein gueltiger Heap entsteht.
             makeheap(problem, 0, i - 1);
         }
-
-
-        ((AbstractSortingMechanics) decoratedAlgorithm).setRunning(false);
     }
 
     public void makeheap(int a[], int root, int max) {
+//        ((SynchronizedSorter)decoratedAlgorithm).highlightRange(root,max, VisualFeedbackSorter.colorHighlight);
         int sub;
         do {
             // berechne Index des Sohnes
