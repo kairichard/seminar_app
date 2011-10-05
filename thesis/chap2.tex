@@ -3,128 +3,131 @@
 \subsection{Big-O-Notation}
 {\Huge{$$ O(n) $$}}
 
-Diese Notation dient der Angabe von Effizienz von Algorithmen man könnte auch sagen das damit
-die maximale Anzahl Schritte im schlechtesten,durschnitts,besten Fall oder auch Worst/Average/Best-Case-Scenario angeben wird.\\*
-Also z.b.: $O(n^2)$ bedeute das der Algorithmus bei einem Array von $4$ Integern maximal 16 Schritte
-benötigt bis das Array sortiert ist - oder eben weniger da $4^2 = 16$.
-Wir werden von dieser Notation im folgenenden ein paar mal gebrauch machen um die Algorithmen zu beschreiben.
-Mathematisch korrekter wäre aber $O(f(n^2))$ da dem $n$ noch ein konstanter Faktor, den Algorithmus betreffend, vorsteht.
+Diese Notation dient zur Angabe der Effizienz von Algorithmen. Sie gibt die maximale Anzahl der Operationsschritte
+ im schlechtesten, durschnittlichen oder besten Fall an (Worst/Average/Best-Case-Scenario).\\*
+Beispielsweise bedeutet $O(n^2)$, dass der Algorithmus bei einem Array von $4$ Integern maximal 16 Operationschritte
+benötigt bis das Array sortiert ist - oder weniger da $4^2 = 16$.
+Von dieser Notation wird im Folgenenden mehrere Male gebrauch gemacht um die Algorithmen zu beschreiben.
+Mathematisch korrekter wäre jedoch $O(f(n^2))$, da der Variable $n$ noch ein konstanter Faktor für den Algorithmus vorsteht.
 \subsection{Die Applikation oder App}
-Mit der "`Applikation"' oder auch "`App"' ist im folgenden die von mir, Kai Richard König, entwickelte Java-Desktop-Application zur visualisierung von 
-Sortieralgorithmen gemeint.
+Mit der "`Applikation"' oder "`App"' wird im Folgenden die von mir entwickelte Java-Desktop-Application zur Visualisierung von 
+Sortieralgorithmen bezeichnet. Die Applikation liegt in kompilierter und unkompilierter Form vor und ist auf der beigelegt CD-ROM
+zufinden.
 \subsection{Algorithmus}
 \begin{munquote}[\parencite{wiki_algo}]
-  Ein Algorithmus ist eine aus endlich vielen Schritten bestehende eindeutige Handlungsvorschrift zur Lösung eines Problems 
-  oder einer Klasse von Problemen.
+Ein Algorithmus ist eine aus endlich vielen Schritten bestehende eindeutige Handlungsvorschrift zur Lösung eines Problems 
+oder einer Klasse von Problemen.
 \end{munquote}
 \section{Visualisierungen von Algorithmen}
- Ohne jetzt eine Beweis zu führen, lässt sich behaupten das der Mensch und sein Gehirn in der Lage sind Informationen in visueller Form
- wesentlich schneller zu absorbieren als in geschriebener Form. Darum macht es auch durchaus Sinn die Abläufe eines Sortieralgorithmus 
- zu visualisieren anstatt den Vorgang in textueller Form oder gar in Programmcode zu beschreiben.
- Außerdem sind Algorithmen ein wichtiger Bestandteil von Informatik-Studiengängen und auch deshalb es ist nicht zu verachten wenn 
- Information durch soviele Kanäle transportiert werden wie möglich - einer davon könnte eben auch die Vorgangsvisualisierung sein.
- Um nun wieder auf den eigentlich Inhalt dieser Seminararbeit zurück zuschwenken, möchte ich in den folgenden Abschnitte auf die einzelen in
- der Applikation vorkommenden Algorithmen eingehen, sie vorstellen und vergleichen. 
- 
+Informationen können von unserem Gehirn grundsätlich sehr viel schneller in bildlicher Form aufgenommen und ausgewertet werden, als in Textform.
+Darum macht es Sinn die Abläufe eines Sortieralgorithmus zu visualisieren anstatt den den Vorgang in schriftlicher Form oder gar als Programmcode zu beschreiben.
+Zudem sind Sortieralgorithmen ein wichtger Bestandteil in Informatik-Studiengängen. Dort könnte eine Möglichkeit zum besseren Versändnis von Sortieralgorithmen
+ eine zusätzliche optische Bertachtung darstellen. In den folgenden Abschnitten werden nun die fünf in der Applikation verwendeten Sortieralgorithmen vorgestellt und 
+miteinander verglichen.  
 \section{Verwendete Algorithmen}
 \subsection{Bubblesort}
- Der Bubblesort Algorithmus ist der einfachste unter den Sortieralgorithmen und ist dementsprechend langsam.
- Ganz einfach weil der Algorithmus einen ziemlich navien Ansatz wählt. Jedes Element eines Arrays wird mit dem nachfolgenden verglichen, ist es größer 
- so tauschen die beiden Element den Platz. Dieser Vorgang wird dann solange wiederholt bis keines der Element mehr den Platz wechselt. 
- Diese Herrangehensweise impliziert quasi das die Prüfung, ob das Array sortiert ist, schon eingebaut ist. 
- Ebenso ergibt diese Handlungsvorschrift eine "`avarage case performance"' von
- $O(n^2)$. Würde Bubblesort nun versuchen ein schon sortiertes Array zu sortieren so bräuchte der Algorithmus genau die 
- Anzahl Schritte wie das Array groß wäre und daraus würde sich dann eine "`best case performance"' von $O(n)$ ergeben.
- \parencite[vgl.][]{Bubblesort}
+ Der Bubblesort-Algorithmus ist der einfachste unter den Sortieralgorithmen. Er ist dementsprechend langsam,
+ da für den Algorithmus ein wenig weitsichtiger Ansatz gewählt wurde. Jedes Element eines Arrays wird mit dem direkt nachfolgenden Element verglichen.
+Ist das erste Element größer, 
+ so tauschen beide Element ihren Platz. Dieser Vorgang wird solange wiederholt bis keines der Element mehr den Platz wechselt. 
+ Diese Herrangehensweise impliziert, dass die Prüfung ob ein Array bereits sortiert ist, schon eingebaut ist. 
+ Ebenso ergibt diese Handlungsvorschrift eine `avarage-case performance' von
+ $O(n^2)$. Würde Bubblesort nun versuchen ein schon sortiertes Array zu sortieren, so bräuchte der Algorithmus genau die 
+ Anzahl Schritte, die das Array groß wäre. Daraus würde sich dann eine `best-case performance' von $O(n)$ ergeben
+ \parencite[vgl.][]{Bubblesort}.
  
 \subsection{Quicksort}
-Quicksort ist, wie der Name schon sagt, ein sehr schneller Algorithmus mit einer einer Average-Case-Performance von $O(n\cdot log(n))$. 
-Die Funktionsweise und der Aufbau ist anders als gedacht eher simpel. Die gute Performance wird durch eine Verfahren erreicht das 
-sich "`Teile und herrsche"' (lat. Divide et impera!, engl. Divide and conquer)\cite{wiki_quicksort} nennt, dabei wird das Problem
-in kleinere Probleme unterteilt, diese werden dann gelöst und am Ende wieder zusammengeführt. Konkret wählt der Algorithmus
-zu erst ein Orientierungselement aus, in den meisten fällen bietet sich dazu das Element in der Mitte an. Nun werden alle Element die kleiner
+Quicksort ist ein sehr schneller Sortieralgorithmus mit einer average-case performance von $O(n\cdot log(n))$. 
+Funktionsweise und Aufbau sind relativ simpel gehalten. Die gute Performance wird durch eine Verfahren erreicht das 
+sich "`Teile und herrsche"' (lat. Divide et impera!, engl. Divide and conquer)\cite{wiki_quicksort} nennt. Dabei wird das Problem
+in kleinere Problemeinheiten unterteilt, diese werden dann gelöst und am Ende wieder zusammengeführt. Der Sortieralgorithmus wählt zunächst
+ein Orientierungselement aus, in den meisten fällen bietet sich dazu das Element in der Mitte an. Nun werden alle Element die kleiner
 sind als das Orientierungselement nach links und jene
-die größer sind nach rechts verschoben. Anschließend wird der Vorgang mit den Unterprobleme, also der linken und der 
-rechten Seite, solange wiederholt, sprich der
-Algorithmus wird rekursiv aufgerufen, bis die länge der auftretenden Unterprobleme zwei erreicht hat. In der Praxis
-erweist sich ein gut implentierter Quicksort-Algorithmus als das schnelltste Sortierverfahren. \parencite[vgl.][]{quicksort}
+die größer sind nach rechts verschoben. Anschließend wird der Vorgang mit den Unterprobleme solange wiederholt - der
+Algorithmus wird rekursiv aufgerufen - bis die Länge der auftretenden Unterprobleme den Wert zwei erreicht hat. In der Praxis
+erweist sich ein gut implentierter Quicksort-Algorithmus als das schnelltste Sortierverfahren \parencite[vgl.][]{quicksort}.
 
 \subsection{Heapsort}
-Der Heapsort hießt deswegen so weil er ein Problem welches zuerst in einen Heap überführt wird sortieren kann. Heap bedeutet im Englischen 
-"`der haufen"'  oder auch  "`die Menge"' aber eigenlich ist damit ein Binärbaum (engl. Binary Tree, Binary Heap) gemeint. Ein Binärbaum 
-ist ein Datenstruktur bei der es sogenannte Konten (engl. leafs, nodes) gibt, die maximal zwei Unterknoten haben können. 
-Diese Struktur bringt Eigenschaften mit sich die dieser Algorithmus für sich nutzt. Der Binary Heap wird von links nach recht und von oben nach
-unten gefüllt, das heißt, erst wird einen sogenannte Wurzel (engl. root node) angelegt die Wurzel bekommt dann zwei Nodes
-und so weiter bis das Problem komplett im Baum präsent ist. Zugleich wird ein Regelwerk umgesetzt das besagt das ein Knoten keinen Unterknoten
-haben darf dessen Wert größer ist als der eigene. Folglich steht an der Wurzel des Baumes immer der größte Werte. Entnimmt mann diesen und
-schreibt ihn ans Ende einer neue Datenstruktur oder Arrays, so wird der
-Baum nach dem beschrieben Regelwerk neugeordnent und demgemäß steht wieder das größte Element an der Wurzel welches wieder entnommen werden kann.
-Diesen Vorgang wird wiederholt bis der Binary Heap abgebaut ist. Im ganzen ergibt sich daraus 
-eine "`avarage case performance"' von $O(n\cdot log(n))$. \parencite[vgl.][]{heapsort}
+Heapsort trägt seinen Namen, da er ein Problem zuerst in einen Heap überführt und anschließend sortieren. Heap bedeutet im Englischen 
+"`der Haufen"'  oder auch  "`die Menge"', eigenlich ist damit jedoch ein Binärbaum (engl. Binary Tree, Binary Heap) gemeint. Ein Binärbaum 
+ist ein Datenstruktur bei der es sogenannte Knoten (engl. leafs, nodes) gibt, die maximal zwei Unterknoten haben können. 
+Diese Struktur enthält Eigenschaften, die der Sortieralgorithmus für sich nutzt. Der Binary Heap wird von links nach rechts und von oben nach
+unten gefüllt. Zunächst wird eine sogenannte Wurzel (engl. root node) angelegt, diese Wurzel bekommt dann zwei Knoten
+und so weiter bis das Problem komplett in dem Binärbaum präsent ist. Zugleich wird ein Regelwerk umgesetzt das besagt, dass ein Knoten keinen Unterknoten
+besitzen darf, dessen Wert größer ist als der eigene. Folglich steht an der Wurzel des Binärbaumes immer der größte Wert. Wird dieser Wert nun entnommen und an das 
+Ende einer neuen Datenstruktur oder eines Arrays geschrieben, so wird der BinärBaum nach dem beschrieben Regelwerk neugeordnent.
+Jetzt steht wieder das größte Element an der Wurzel, so dass es erneut entnommen werden kann.
+Diesen Vorgang wiederholt Heapsort bis der Binary Heap komplett abgebaut ist. Im Ganzen ergibt sich daraus 
+eine `avarage-case performance' von $O(n\cdot log(n))$ \parencite[vgl.][]{heapsort}.
 
 \subsection{Insertionsort}
-Beim Insertionsort (englisch insertion ‚Einfügen‘ und englisch sort ‚sortieren‘) handelt es sich um einen relativ simplen Algorithmus. Das 
-Prozedere in welchem das Problem sortiert wird ist vergleichbar mit dem des Bubblesort. Ein wird Element betrachtet, ist es größer als sein
+Bei Insertionsort (engl. insertion: Einfügen, sort: sortieren) handelt es sich wiederum um einen relativ einfachen Sortieralgorithmus. Das 
+Prozedere mit dem das Problem sortiert wird ist vergleichbar mit dem des Bubblesort. Es wird ein einzelnes Element betrachtet, ist es größer als sein
 nächster Nachbar so werden die Element getauscht. 
-Das Element was nun nach hinten verschoben wurde, wird solange weiter nach hinten verschoben bis es nicht
-mehr größer ist als das nächst hintere. Dieser Vorgang wird für alle Elemente beim ersten anfangend bis zum letzten genau einmal durch geführt.
-Daraus lässt sich erkennen das dass Insertionsort-Methodik
-erstens für eher kleinere Problem geeignet ist und zweitens dennoch schneller als der Bubblesort-Algorithmus ist,
-da, wenn bei dem Letzten Elemente angekommen, das Problem bereits gelöst ist. 
-Insertionsort ist mit einer "`avarage case performance"' von $O(n^2)$ angegeben.\parencite[vgl.][]{insertionsort}
+Das Element welches nun nach hinten verschoben wurde wird solange weiter nach hinten verschoben bis es nicht
+mehr kleiner ist als das nächsthintere Element. Dieser Vorgang wird für alle Elemente, beim ersten beginnend bis zum letzten, genau einmal durchgeführt.
+Daraus lässt sich erkennen, dass die Insertionsort-Methodik zum Einen eher für
+ kleinere Problem geeignet ist, zum Anderen aber dennoch schneller ist als der Bubblesort-Algorithmus ist, da nach einem einzigen Durchlauf
+das Problem bereits gelöst ist. 
+Insertionsort ist mit einer `avarage-case performance' von $O(n^2)$ angegeben \parencite[vgl.][]{insertionsort}.
 
 \subsection{Mergesort}
 Ähnlich wie der Quicksort-Algorithmus bedient sich auch der Mergesort-Algorithmus an dem übergeordnetem "`Teile und herrsche"'-Prinzip.
-Dabei fällt, anders als beim Quicksort, die meiste Arbeit auf wieder Zusammenführen aus. Was sich auch deutlích im Source-Code wiederspiegelt.
-Denn ist das Problem ersteinmal rekursiv in die kleinst mögliche Teilmenge oder auch 
-elementar Menge zerlegt, wie beim Mergesort üblich, bricht die rekursion ab und die Teillösungen werden wieder zusammen geführt 
-\parencite[S.24]{taschenbuch}, indes werden die
-Elemente der Teilmengen mit einander verglichen und an die entsprechende Stelle geschrieben.\parencite[vgl.][]{mergesort}
-\newpage
+Dabei fällt, anders als bei Quicksort, die meiste Arbeit auf das Zusammenführen der Unterprobleme aus. Dies spiegelt sich deutlich in dem Source-Code wieder.
+Ist das Problem vollständig in die kleinst mögliche Teilmenge, auch 
+elementare Menge, zerlegt, so bricht die Rekursion ab und die Teillösungen werden wieder zusammen geführt 
+\parencite[vgl. S.24]{taschenbuch}. Gleichzeitig werden die
+Elemente der Teilmengen miteinander verglichen und an die entsprechende Stelle geschrieben \parencite[vgl.][]{mergesort}.
+
 \section{Entwurf der Oberfläche}
-Die Oberfläche, im folgenden GUI genannt, sollte zunächst so simple wie möglich sein und den Betrachter auf das wesentliche lenken, die Balkendiagramme in
-der mitte der Applikation. Oberhalb sowie unterhalb der Balkendiagramme, jeweils abgetrennt durch einen feinen Strich 
+Die Oberfläche, im folgenden GUI genannt, sollte zunächst so simpel wie möglich sein und den Betrachter auf das Wesentliche lenken: die Balkendiagramme in
+der Mitte der Applikation. Oberhalb sowie unterhalb der Balkendiagramme, jeweils abgetrennt durch einen feinen Strich, 
 finden sich die wesentlichen Steuerelement wieder.
-\munepsfig[scale=0.08]{entwurf_paper}{Eintwurf auf einem Papier, im Jargon auch Scribble genannt}
+\munepsfig[scale=0.08]{entwurf_paper}{Entwurf auf Papier}
 
-Oberhalb definiert man, zum Einstieg, per Drop-Down-Menue die Art des Problems, mögliche Auswahlmöglichkeiten sind:
-"`Random"' - für eine zufällige Zahlenreihe,  "`Reverse"' - für eine absteigend sortierte Zahlenreihe,  "`Stairs"' - für
-eine stufenartige Zahlenreihe mit wenig einzigartigen Element und zuletzt  "`predefined"' für eine immer gleichbleibende Zahlenreihe.
-Mit der Auswahl von "`predefined"' ist sichergestellt das die Auswertungen vergleichbar bleiben.
+Oberhalb der Balkendiagramme wird zunächst in einem Drop-Down-Menue die Art des Problems festgelegt.
+Die Auswahlmöglichkeiten umfassen:
 
-Rechts daneben hält sich eine Slider auf mit welchem man die größe des Problems definiert, die einstellbaren Werte reichen von 10 bis 50
-und lassen sich in Zehnerschritte verändern. Noch weiter rechts ist ein Button platziert mit dem die Einstellungen die mann getätigt hat auf 
-die Balkendiagramme überträgt. 
+\begin{itemize}
+    \item "`Random"' - für eine zufällige Zahlenreihe  
+    \item "`Reverse"' - für eine absteigend sortierte Zahlenreihe
+    \item "`Stairs"' - für eine stufenartige Zahlenreihe mit wenig einzigartigen Element
+    \item "`predefined"' - für eine immer gleichbleibende Zahlenreihe\footnote{Mit der Auswahl "predefined" ist sichergestellt, dass die Auswertungen vergleichbar bleiben.}
+\end{itemize}
+
+Rechts neben dem Drop-Down-Menue befindet sich ein Slider, mit dem man die größe des Problems definiert. Die einstellbaren Werte reichen von 10 bis 50
+und lassen sich in Zehnerschritte verändern. Rechts daneben ist ein Button platziert, mit dem die Einstellungen auf 
+die Balkendiagramme übertragen werden. 
 \paragraph*
-\noindent Darunter befinden sich die die Balkendiagramme, die je nach eingestellter Problemgröße unterschiedlich breite Balken ausweisen.
-Unterhalb der Balkendiagramme steht die Legende die die verschiedene Operationstypen mit den korrespondierenden Farben gegenüberstellt. 
-In dem letzten sechtel des Fensters befinden sich weiter Steuerelemente, auf der linken Seite ein Button für das Pausieren der laufenden
-Sortierungen, wenn pausiert kann mann den Button daneben benutzen um manuell jeden noch nicht sortierten Algorithmus eine einzelene Operation
-durchführen zulassen. Weiter rechte ist wieder ein Slider anzutreffen mit dem mann das Interval einstellen kann mit die Algorithmen angewiesen
-werden einen Schritt weiter zu sortieren. Auf der rechten Seite befinden sich der Button mit der Aufschrift  "`sort"' welcher nach den  getroffenen 
-"`Voreinstellungen"' betätigt werden kann, damit alle Algorithmen anfangen ihr Problem zulösen.
+\noindent Darunter befinden sich die Balkendiagramme, die, je nach eingestellter Problemgröße, unterschiedlich breite Balken ausweisen.
+Unterhalb der Balkendiagramme ist die Legende platziert, welche die verschiedenen Operationstypen mit passenden Farbschattierungen gegenüberstellt. 
+In dem unteren Teil des Fensters befinden sich weiter Steuerelemente. Auf der linken Seite gibt es ein Button für das Pausieren der laufenden
+Sortierungen. Wird pausiert, so kann der Button daneben benutzen werden um manuell jeden weiteren Operationsschritt einzeln durchzuführen.
+ Rechts daneben befindet sich ein weierer Slider, mit dem intervallartig die Sortiergeschwindigkeit eingestellt werden kann. 
+bschließend ist ein Button mit der Aufschrift  "`sort"' in der rechten unteren Ecke platziert, der nach getroffener 
+"`Voreinstellung"' betätigt werden kann, so dass alle Algorithmen mit der Sortierung beginnen.
 
-Der Untererand der App beinhaltet desweitern noch eine Statusleiste die aufschluss über die Statusse der Application selbst geben soll.
-Wie in Abb.\ref{fig:entwurf_paper} angedeutet und im obrigen beschrieben kann mann in der folgenden Abb. \ref{fig:app_start_state} sehen wie
-der Entwurf umgestetz wurde.
+Der Untererand der App beinhaltet desweitern eine Statusleiste die Aufschluss über den Zustand der Application selbst gibt.
+Abbildung \ref{fig:app_start_state} zeigt wie der Entwurf umgesetzt wurde.
 \munepsfig[scale=0.4]{app_start_state}{Java-Application nach dem Start}
 
 \section{Programmablauf}
-Startet mann die Applikation werden als erstes die Standardeinstellungen geladen, Problem "`Random"', Problemsize 10, Interval 250 Millisekunden.
-Anschließende kann mann entsprechende Einstellungen nach eigenem ermessen verändern. Der Button "`pause"' und 
-"`step"' sind inaktiv gestellt, sprich sie lassen sich nicht betätigen. Nur der Button  "`sort"' ist aktiv. Klickt mann nun auf  "`sort"' so kann 
-mann beobachten wie die Balken mit verschieden Farben hervorgehoben werden und sich das Balkendiagramm langsam, oder auch schnell je nach Interval
-sortiert. Nun hat man die möglichkeit  "`pause"' zudrücken und das sortieren anzuhalten um mit dem  Button "`step"' schrittweise weiter zusortiern.
-Währendessen steht im Pause-Button  "`resume"' was, wenn gedrückt den Sortiervorgang wieder automatischen weiterlaufen lässt. Ist das geschehn steht 
-im Pause-Button auch wieder  "`pause"'. Außerdem ist während des ganz Sortiervorgangs der Button  "`sort"' deaktiviert.
+Startet mann die Applikation, so werden als erstes die Standardeinstellungen geladen: Problem "`Random"', Problemsize 10, Interval 250 Millisekunden.
+Anschließende können die Einstellungen entsprechend dem eigenen ermessen verändert werden. Die Buttons "`pause"' und 
+"`step"' sind inaktiv, sie lassen sich also noch nicht betätigen. Nur der Button  "`sort"' ist aktiv. Wird auf "`sort"' geklickt, so kann 
+beobachtet werden wie die Balken mit verschieden Farben hervorgehoben werden und sich das Balkendiagramm, je nach eingestellter Sortiergeschwindigkeit, 
+schnell oder langsam sortiert.
+Nun ist der "`pause"'-Button aktiviert und der Sortiervorgang kann angehalten werden. Mit dem  Button "`step"' kann nun schrittweise weitersortiert werden.
+Zeitgleich steht im "pause"-Button "`resume"'. Angeklickt lässt dieser den Sortiervorgang wieder automatischen weiterlaufen. Ist dies geschehn, steht 
+im "resume"-Button auch wieder  "`pause"'. Zudem ist während des ganzen Sortiervorgangs der Button  "`sort"' deaktiviert.
 
-Ist ein Balkendiagramm fertig sotiert, also der Algorithmus durchgelaufen, so wird ein Linendiagramm über das Balkendiagramm gelegt welches die Position
-des Algorithmus im vergleich zu den anderen beinhaltet sowie die Anzahl durchgeführter Operation sowie die Sortiertheit auf der Y-Achse und
-die Anzahl Operation auf der X-Achse anzeigt.
+Ist ein Balkendiagramm komplett sotiert und der Algorithmus beendet, so wird ein Linendiagramm über das Balkendiagramm gelegt, das die Position
+des Algorithmus im Vergleich zu den anderen beinhaltet, die Anzahl durchgeführter Operation sowie den Grad der Sortiertheit auf der Y-Achse und
+die Anzahl an Operationsschritten auf der X-Achse anzeigt.
  
-An dem Punkt angekommen kann der Anwender nun entwerder noch einmal auf "`sort"' drücken was dazu führt das die bereits sortierten Balken
-nocheinmal sortiert werden oder er kann den oben beschrieben Vorgang wiederholen und andere Einstellungen wählen.
-Falsche Eingaben kann der Nutzer dabei nicht treffen, alle Einstellungskombinationen sind denkbar und durchführbar. Einzig und allein
-kann ein zu kurze gewähltes Interval auf langsamen Computer dazu führen das der Sortiervorgang nicht mehr flüßig aussieht.
+An dem Punkt angekommen kann der Anwender nun entwerder noch einmal auf "`sort"' drücken und die bereits sortierten Balken
+nocheinmal sortieren lassen. Oder er wiederholt den oben beschrieben Vorgang mit anderen Einstellungen.
+Falsche Eingaben kann der Nutzer dabei nicht treffen, alle Einstellungskombinationen sind denkbar und durchführbar. Einzig
+ein zu kurz gewähltes Interval kann auf langsamen Computern dazu führen, dass der Sortiervorgang nicht mehr flüßig aussieht.
 
 

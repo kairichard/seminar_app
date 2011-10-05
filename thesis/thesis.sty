@@ -12,10 +12,10 @@
 \usepackage{wrapfig}
 \usepackage{listings}
 
-
+\renewcommand{\listingscaption}{Quellcode}
 % To get @webpage style for bib
 % \usepackage[babel,german=quotes]{csquotes}
-\usepackage[bibstyle=draft,citestyle=authortitle]{biblatex}
+\usepackage[bibstyle=authortitle,citestyle=authortitle]{biblatex}
 
 \bibliography{ref.bib}
 % Figures floating around text
@@ -34,15 +34,30 @@
 
 \oddsidemargin = .5in
 \textwidth = 6in
-
+\voffset = 0cm
 \headheight = 0in
 \headsep = 0in
-\topmargin = .25in
+\topmargin = 0in
 \textheight = 8.5in
-
+\marginparwidth = 4cm
 \floatsep = .29in
 \textfloatsep = \floatsep
 \intextsep = \floatsep
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\bf\huge}{\thechapter}{1em}{}
+\newcommand{\bigrule}{\titlerule[0.5mm]} 
+\titleformat{\chapter}[display] 
+{\bfseries\Huge} 
+{% 
+ \vskip-3em 
+ \titlerule 
+ \filleft 
+ \Large\chaptertitlename\ 
+ \Large\thechapter} 
+{0mm} 
+{\filleft} 
+[\vspace{0.5mm} \bigrule] 
 
 % To have the references sorted in the order they are cited,
 % (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
@@ -101,7 +116,7 @@
 \vspace{\fill}
 
 von \\
-\copyright\ #2
+\ #2
 
 
 #4 \\

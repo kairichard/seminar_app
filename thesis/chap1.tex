@@ -2,35 +2,38 @@
 \label{chap:concepts}
 \section{Was macht das Programm ?}
 
-Das Java-Programm soll anhand von
-Visualisierungen die Funktionsweise von fünf\footnote{
+Das Java-Programm soll die Funktionsweise von fünf unterschiedllichen Sortieralgorithmen\footnote{
  Bubble sort(Type: Exchange sort) | 
  Quicksort(Type: Exchange sort) | 
  Heapsort(Type: Selection sort) | 
  Insertion sort(Type: Insertion sort) | 
  Merge sort(Type: Merge sort) | 
- } unterschiedlichen Sortieralgorithmen
-darstellen. Zur Verdeutlichung der Vorgänge wird jedem Algorithmus ein Balken-Diagramme zugewiesen, bei dem jeder Balken
-einem Zahlenwert entspricht, 
-vergleicht der Algorithmus nun zwei Zahlen werden die korrespondierende 
+ } mit Hilfe von Diagrammen anschaulich darstellen. 
+ Zur Verdeutlichung der Vorgänge wird jedem Algorithmus ein Balken-Diagramme zugewiesen, in dem jeder Zahlenwert
+einem Balken entspricht.
+Vergleicht der Algorithmus nun zwei Zahlenwerte miteinander, so werden die korrespondierenden 
 Balken farblich hervorgehoben. Entscheidet der Algorithmus das einer der Balken 
-vorschoben werden muss um alle Zahlenwerte in eine korrekte, aufsteigende Reihenfolge zu bringen
-so wird auch diese Operation im Balken-Diagramm durch einen farbliche Hervorhebung visualisiert.
+vorschoben werden muss um alle Zahlenwerte in eine korrekte, aufsteigende Reihenfolge zu bringen,
+so wird auch diese Operation im Balken-Diagramm durch farbliche Hervorhebung visualisiert.
 \paragraph*
-\noindent Um die dargestellten Algorithmen noch besser
-verstehen zu können, laufen alle Operation synchronisiert und parallel ab, das heißt
-jeder Algorithmus kann pro Zeit nur eine Änderung an den Zahlenwerten durchführen. Diese Restriktion stellt sicher das
-die Ergebnisse reproduzierbar und vergleichbar bleiben. 
-Dazu hat der Benutzer noch die Möglichkeit spezielle Zahlenwert/Balken Kombinationen 
-auszuwählen um schwächen und stärken einzelner Algorithmen besser sichtbar zu machen.
-Denkbar wären zum Beispiel Kombinationen die in umgekehrter Reihenfolge vorliegen oder welche bei denen
-nur wenige Werte an der "`falschen"' stelle sind oder auch solche bei denen es viele gleiche Werte gibt.
+\noindent Um die fünf dargestellten Algorithmen besser vergleichen
+zu können, laufen alle Operationen synchronisiert und parallel ab.
+Zudem kann jeder Algorithmus pro Zeiteinheit nur eine Änderung an den Zahlenwerten durchführen. Diese Restriktion stellt sicher, dass
+die Ergebnisse reproduzierbar bleiben. 
+Zusätzlich hat der Benutzer die Möglichkeit spezielle Zahlenwert/Balken-Kombinationen 
+auszuwählen um die Schwächen und Stärken einzelner Algorithmen deutlich sichtbarer zu gestalten.
+Möglich Kombinationen sind zum Beispiel:
+\begin{itemize}
+    \item Zahlenwerte, die in mathematisch umgekehrter Reihenfolge vorliegen
+    \item Zahlenreihen, in denen es nur eine geringe Anzahl an Zahlenwerten an der "`falschen"' Stelle gibt
+    \item Zahlenreihen, bei denen es mehrere gleiche Zahlenwerte gibt
+\end{itemize}
 
 \paragraph*
-\noindent Wichtig ist vorallem das dem Anwender bei der Betrachtung klar 
+\noindent Wichtig ist vorallem, dass dem Anwender bei der Betrachtung klar 
 wird welcher Algorithmus sich für welche Problemstellung am besten eignet. 
-Erreicht wird das durch ein Ranking welches am Ende der Laufzeit jedes Algorithmus  
-über das zugewiesen Balken-Diagramme gelegt wird. Auf der Fläche werden der Rang, 
-sprich wie lange der Algorithmus im vergleich zu den anderen gebraucht hat, eine Diagramm
-bei dem der Grad der "`Sortiertheit"' über die Zeit dargestellt wird,
-sowie die Anzahl durchgeführter Operationen zu finden sein.
+Erreicht wird dies durch ein Liniendiagramm welches am Ende der Laufzeit eines jedes Algorithmus  
+über das zugewiesene Balken-Diagramm gelegt wird. Durch den Vergleich der Linien ist ersichtlich, wie sich der Grad der "Sortiertheit" 
+bei den verschiedenen 
+Algorithmen über die Zeit entwickelt. Die Anzahl der durchgeführten Operationen ist unterhalb der Liniendiagramme angegeben.
+
